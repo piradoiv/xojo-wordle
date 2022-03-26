@@ -21,7 +21,6 @@ Begin WebContainer GameGrid
    Width           =   380
    _mDesignHeight  =   0
    _mDesignWidth   =   0
-   _mName          =   ""
    _mPanelIndex    =   -1
 End
 #tag EndWebContainerControl

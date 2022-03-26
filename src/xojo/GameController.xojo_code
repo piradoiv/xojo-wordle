@@ -55,8 +55,15 @@ Inherits WebSDKControl
 		    SharedClassFile = New WebFile
 		    SharedClassFile.MIMEType = "text/javascript"
 		    SharedClassFile.Session = Nil
-		    SharedClassFile.Filename = "XojoGameController.js"
-		    SharedClassFile.Data = kJSCode
+		    SharedClassFile.Filename = "WordleGameController.js"
+		    
+		    Var file As FolderItem = SpecialFolder.Resources.Child("js").Child("WordleGameController.js")
+		    If Not file.Exists Then
+		      Break
+		    End If
+		    Var reader As TextInputStream = TextInputStream.Open(file)
+		    SharedClassFile.Data = reader.ReadAll
+		    reader.Close
 		  End If
 		  
 		  Return Array(SharedClassFile.URL)

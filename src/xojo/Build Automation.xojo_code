@@ -15,7 +15,7 @@
 					Target = 0
 					Destination = 1
 					Subdirectory = js
-					FolderItem = Li4vLi4vanMvZGlzdC8=
+					FolderItem = Li4vLi4vanMvZGlzdC9Xb3JkbGVHYW1lQ29udHJvbGxlci5qcw==
 				End
 			End
 			Begin BuildStepList Windows
