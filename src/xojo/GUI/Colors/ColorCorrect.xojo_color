@@ -1,0 +1,8 @@
+#tag ColorGroup
+	CodeName=ColorCorrect
+	#tag Color
+		Type=0
+		Platform=3
+		Light=6AAA6400
+	#tag EndColor
+#tag EndColorGroup

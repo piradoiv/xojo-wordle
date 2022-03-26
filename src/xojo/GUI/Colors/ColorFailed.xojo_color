@@ -1,0 +1,8 @@
+#tag ColorGroup
+	CodeName=ColorFailed
+	#tag Color
+		Type=0
+		Platform=3
+		Light=787C7E00
+	#tag EndColor
+#tag EndColorGroup

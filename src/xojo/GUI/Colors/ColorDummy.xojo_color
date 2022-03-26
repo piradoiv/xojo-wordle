@@ -1,0 +1,8 @@
+#tag ColorGroup
+	CodeName=ColorDummy
+	#tag Color
+		Type=0
+		Platform=3
+		Light=97777800
+	#tag EndColor
+#tag EndColorGroup
