@@ -28,14 +28,13 @@ Begin WebPage MultiplayerLobbyWebPage
    _ImplicitInstance=   False
    _mDesignHeight  =   0
    _mDesignWidth   =   0
-   _mName          =   ""
    _mPanelIndex    =   -1
    Begin WebRectangle ContainerRectangle
       BackgroundColor =   &cFFFFFF00
       ControlID       =   ""
       Enabled         =   True
       HasBackgroundColor=   False
-      Height          =   297
+      Height          =   213
       Index           =   -2147483648
       Indicator       =   0
       LayoutDirection =   0
@@ -46,12 +45,12 @@ Begin WebPage MultiplayerLobbyWebPage
       LockHorizontal  =   True
       LockLeft        =   False
       LockRight       =   False
-      LockTop         =   True
-      LockVertical    =   False
+      LockTop         =   False
+      LockVertical    =   True
       Scope           =   0
       TabIndex        =   0
       Tooltip         =   ""
-      Top             =   81
+      Top             =   123
       Visible         =   True
       Width           =   403
       _mDesignHeight  =   0
@@ -87,70 +86,37 @@ Begin WebPage MultiplayerLobbyWebPage
          Text            =   ""
          TextAlignment   =   0
          Tooltip         =   ""
-         Top             =   117
+         Top             =   159
          Visible         =   True
          Width           =   329
          _mPanelIndex    =   -1
       End
-      Begin WebButton CreateButton
+      Begin WebButton EnterButton
          AllowAutoDisable=   False
          Cancel          =   False
-         Caption         =   "Create a Game"
+         Caption         =   "Enter"
          ControlID       =   ""
-         Default         =   False
+         Default         =   True
          Enabled         =   False
          Height          =   38
          Index           =   -2147483648
-         Indicator       =   0
-         InitialParent   =   "ContainerRectangle"
-         Left            =   238
-         LockBottom      =   False
+         Indicator       =   1
+         Left            =   257
+         LockBottom      =   True
          LockedInPosition=   False
          LockHorizontal  =   False
          LockLeft        =   True
          LockRight       =   False
-         LockTop         =   True
+         LockTop         =   False
          LockVertical    =   False
          Parent          =   "ContainerRectangle"
-         Scope           =   0
-         TabIndex        =   2
-         TabPanelIndex   =   0
+         Scope           =   2
+         TabIndex        =   6
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   224
+         Top             =   262
          Visible         =   True
-         Width           =   137
-         _mPanelIndex    =   -1
-      End
-      Begin WebButton JoinButton
-         AllowAutoDisable=   False
-         Cancel          =   False
-         Caption         =   "Join a Game"
-         ControlID       =   ""
-         Default         =   False
-         Enabled         =   False
-         Height          =   38
-         Index           =   -2147483648
-         Indicator       =   0
-         InitialParent   =   "ContainerRectangle"
-         Left            =   238
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockHorizontal  =   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         LockVertical    =   False
-         PanelIndex      =   0
-         Parent          =   "ContainerRectangle"
-         Scope           =   0
-         TabIndex        =   3
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Tooltip         =   ""
-         Top             =   279
-         Visible         =   True
-         Width           =   137
+         Width           =   100
          _mPanelIndex    =   -1
       End
    End
@@ -180,6 +146,32 @@ Begin WebPage MultiplayerLobbyWebPage
       _mDesignWidth   =   0
       _mPanelIndex    =   -1
    End
+   Begin MultiplayerWordleToolbar PageToolbar
+      ControlID       =   ""
+      Enabled         =   True
+      FullWidth       =   False
+      Height          =   56
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   0
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      LockVertical    =   False
+      Position        =   0
+      Scope           =   2
+      TabIndex        =   5
+      TabStop         =   True
+      Title           =   ""
+      Tooltip         =   ""
+      Top             =   0
+      Visible         =   True
+      Width           =   614
+      _mPanelIndex    =   -1
+   End
 End
 #tag EndWebPage
 
@@ -190,23 +182,14 @@ End
 	#tag Event
 		Sub TextChanged()
 		  Var shouldEnable As Boolean = Me.Text.Trim <> ""
-		  
-		  CreateButton.Enabled = shouldEnable
-		  JoinButton.Enabled = shouldEnable
+		  EnterButton.Enabled = shouldEnable
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events CreateButton
+#tag Events EnterButton
 	#tag Event
 		Sub Pressed()
-		  MultiplayerServerLobbyWebPage.Show
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events JoinButton
-	#tag Event
-		Sub Pressed()
-		  JoinGameDialog.Show
+		  MultiplayerGameWebPage.Show
 		End Sub
 	#tag EndEvent
 #tag EndEvents

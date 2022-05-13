@@ -60,10 +60,26 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetRowLetters(row As Integer) As GridLetter()
+		  Var result() As GridLetter
+		  For col As Integer = 0 To 4
+		    result.Add(GetLetter(row, col))
+		  Next
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ShakeRow(row As Integer, reason As String = "")
-		  Const duration = 60
 		  Var script() As String
 		  Var js As String
+		  
+		  
+		  
+		  
+		  Const duration = 60
+		  
 		  Var easing As String = "swing"
 		  
 		  For col As Integer = 0 To 4

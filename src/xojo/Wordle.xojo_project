@@ -1,5 +1,5 @@
 Type=Web2
-RBProjectVersion=2022.01
+RBProjectVersion=2022.011
 MinIDEVersion=20200200
 OrigIDEVersion=20220100
 Class=App;App.xojo_code;&h00000000251497FF;&h0000000000000000;false
@@ -24,7 +24,8 @@ WebView=SinglePlayerGameWebPage;GUI/Single Player/SinglePlayerGameWebPage.xojo_c
 Class=SinglePlayerWordleToolbar;GUI/Single Player/SinglePlayerWordleToolbar.xojo_code;&h00000000746C57FF;&h000000006EE777FF;false
 Folder=Multiplayer;GUI/Multiplayer;&h000000003620A7FF;&h0000000056B44FFF;false
 WebView=MultiplayerLobbyWebPage;GUI/Multiplayer/MultiplayerLobbyWebPage.xojo_code;&h000000001A16DFFF;&h000000003620A7FF;false
-WebView=MultiplayerServerLobbyWebPage;GUI/Multiplayer/MultiplayerServerLobbyWebPage.xojo_code;&h0000000019E117FF;&h000000003620A7FF;false
+WebView=MultiplayerGameWebPage;GUI/Multiplayer/MultiplayerGameWebPage.xojo_code;&h0000000019E117FF;&h000000003620A7FF;false
+Class=MultiplayerWordleToolbar;GUI/Multiplayer/MultiplayerWordleToolbar.xojo_code;&h0000000045F997FF;&h000000003620A7FF;false
 WebView=JoinGameWebDialog;GUI/Multiplayer/JoinGameWebDialog.xojo_code;&h00000000121667FF;&h000000003620A7FF;false
 DefaultWindow=WelcomeWebPage
 MajorVersion=1
