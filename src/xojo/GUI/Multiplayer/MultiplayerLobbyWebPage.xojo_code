@@ -112,6 +112,7 @@ Begin WebPage MultiplayerLobbyWebPage
          Parent          =   "ContainerRectangle"
          Scope           =   2
          TabIndex        =   6
+         TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
          Top             =   262
@@ -164,7 +165,6 @@ Begin WebPage MultiplayerLobbyWebPage
       Position        =   0
       Scope           =   2
       TabIndex        =   5
-      TabStop         =   True
       Title           =   ""
       Tooltip         =   ""
       Top             =   0
@@ -189,6 +189,8 @@ End
 #tag Events EnterButton
 	#tag Event
 		Sub Pressed()
+		  Session.Player.Name = GameNameTextField.Text.Sanitize.Trim
+		  App.GlobalGame.AddPlayer(Session.Player)
 		  MultiplayerGameWebPage.Show
 		End Sub
 	#tag EndEvent

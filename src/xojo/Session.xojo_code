@@ -7,6 +7,19 @@ Inherits WebSession
   confirmmessage=
   AllowTabOrderWrap=True
 #tag EndSession
+	#tag Event
+		Sub Opening()
+		  Player = New MultiplayerGamePlayer
+		  Player.Id = Identifier
+		End Sub
+	#tag EndEvent
+
+
+	#tag Property, Flags = &h0
+		Player As MultiplayerGamePlayer
+	#tag EndProperty
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Index"

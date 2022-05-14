@@ -28,7 +28,6 @@ Begin WebPage SinglePlayerGameWebPage
    _ImplicitInstance=   False
    _mDesignHeight  =   0
    _mDesignWidth   =   0
-   _mName          =   ""
    _mPanelIndex    =   -1
    Begin SinglePlayerWordleToolbar PageToolbar
       ControlID       =   ""
@@ -160,7 +159,7 @@ End
 		Sub Opening()
 		  Controller.Keyboard = Keyboard
 		  Controller.Grid = Grid
-		  Controller.WordToGuess = Controller.GetRandomWord
+		  Controller.WordToGuess = WordleDictionary.GetRandomWord
 		  Controller.Enabled = True
 		End Sub
 	#tag EndEvent
@@ -189,7 +188,7 @@ End
 		  Select Case Item.Tag
 		  Case "restart"
 		    Controller.ResetGui
-		    Controller.WordToGuess = Controller.GetRandomWord
+		    Controller.WordToGuess = WordleDictionary.GetRandomWord
 		    Controller.Enabled = True
 		  Case "help"
 		    Controller.Enabled = False

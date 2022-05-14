@@ -18,8 +18,8 @@ Begin WebPage MultiplayerGameWebPage
    LockRight       =   False
    LockTop         =   True
    LockVertical    =   False
-   MinimumHeight   =   400
-   MinimumWidth    =   600
+   MinimumHeight   =   630
+   MinimumWidth    =   960
    TabIndex        =   0
    Title           =   "Multiplayer Wordle"
    Top             =   0
@@ -83,11 +83,11 @@ Begin WebPage MultiplayerGameWebPage
       _mDesignWidth   =   0
       _mPanelIndex    =   -1
    End
-   Begin WebLabel GameCodeLabel
+   Begin WebLabel RemainingTimeLabel
       Bold            =   True
       ControlID       =   ""
       Enabled         =   True
-      FontName        =   ""
+      FontName        =   "Courier New"
       FontSize        =   30.0
       Height          =   38
       Index           =   -2147483648
@@ -121,7 +121,7 @@ Begin WebPage MultiplayerGameWebPage
       Left            =   0.0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   72.0
+      Top             =   0.0
       WordToGuess     =   ""
       _mPanelIndex    =   -1
    End
@@ -140,11 +140,9 @@ Begin WebPage MultiplayerGameWebPage
       LockRight       =   True
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   0
       Position        =   0
       Scope           =   2
       TabIndex        =   4
-      TabStop         =   True
       Title           =   ""
       Tooltip         =   ""
       Top             =   0
@@ -152,7 +150,7 @@ Begin WebPage MultiplayerGameWebPage
       Width           =   880
       _mPanelIndex    =   -1
    End
-   Begin WebLabel Label1
+   Begin WebLabel PlayerPositionLabel
       Bold            =   False
       ControlID       =   ""
       Enabled         =   True
@@ -173,7 +171,6 @@ Begin WebPage MultiplayerGameWebPage
       Multiline       =   False
       Scope           =   2
       TabIndex        =   5
-      TabStop         =   True
       Text            =   "Your position: n/a"
       TextAlignment   =   2
       TextColor       =   &c00000000
@@ -184,20 +181,20 @@ Begin WebPage MultiplayerGameWebPage
       Width           =   380
       _mPanelIndex    =   -1
    End
-   Begin WebListBox ListBox1
+   Begin WebListBox PlayerListBox
       ColumnCount     =   4
-      ColumnWidths    =   "*,25%,*,*"
+      ColumnWidths    =   "20%,20%,30%,30%"
       ControlID       =   ""
       Enabled         =   True
       HasHeader       =   True
-      Height          =   612
+      Height          =   630
       HighlightSortedColumn=   True
       Index           =   -2147483648
       Indicator       =   ""
-      InitialValue    =   "Position	Name	Green Letters	Yellow Letters"
+      InitialValue    =   "Score	Name	Best Attempt	Attempts"
       LastAddedRowIndex=   0
       Left            =   460
-      LockBottom      =   True
+      LockBottom      =   False
       LockedInPosition=   False
       LockHorizontal  =   False
       LockLeft        =   True
@@ -207,20 +204,19 @@ Begin WebPage MultiplayerGameWebPage
       NoRowsMessage   =   ""
       ProcessingMessage=   ""
       RowCount        =   0
-      RowSelectionType=   1
+      RowSelectionType=   0
       Scope           =   2
       SearchCriteria  =   ""
       SelectedRowColor=   &c0272D300
       SelectedRowIndex=   0
       TabIndex        =   6
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   196
       Visible         =   True
       Width           =   400
       _mPanelIndex    =   -1
    End
-   Begin WebLabel Label2
+   Begin WebLabel GameRankingLabel
       Bold            =   False
       ControlID       =   ""
       Enabled         =   True
@@ -241,7 +237,6 @@ Begin WebPage MultiplayerGameWebPage
       Multiline       =   False
       Scope           =   2
       TabIndex        =   7
-      TabStop         =   True
       Text            =   "Current game ranking:"
       TextAlignment   =   2
       TextColor       =   &c00000000
@@ -252,6 +247,34 @@ Begin WebPage MultiplayerGameWebPage
       Width           =   400
       _mPanelIndex    =   -1
    End
+   Begin WebTimer RefreshPlayerListTimer
+      ControlID       =   ""
+      Enabled         =   True
+      Index           =   -2147483648
+      Left            =   0.0
+      Location        =   1
+      LockedInPosition=   False
+      Period          =   2500
+      RunMode         =   2
+      Scope           =   0
+      Top             =   0.0
+      _mPanelIndex    =   -1
+   End
+   Begin WebTimer SecondsTimer
+      ControlID       =   ""
+      Enabled         =   True
+      Index           =   -2147483648
+      Left            =   0.0
+      Location        =   1
+      LockedInPosition=   False
+      Period          =   500
+      RunMode         =   2
+      Scope           =   2
+      TabIndex        =   8
+      TabStop         =   True
+      Top             =   0.0
+      _mPanelIndex    =   -1
+   End
 End
 #tag EndWebPage
 
@@ -260,9 +283,47 @@ End
 		Sub Opening()
 		  Controller.Keyboard = Keyboard
 		  Controller.Grid = Grid
-		  Controller.WordToGuess = Controller.GetRandomWord
+		  Controller.WordToGuess = WordleDictionary.GetRandomWord
 		End Sub
 	#tag EndEvent
+
+
+	#tag Method, Flags = &h21
+		Private Sub RefreshPlayerList()
+		  Var players() As MultiplayerGamePlayer = App.GlobalGame.GetAllPlayers
+		  
+		  For Each player As MultiplayerGamePlayer In players
+		    For index As Integer = PlayerListBox.RowCount - 1 DownTo 0
+		      Var rowPlayer As MultiplayerGamePlayer = PlayerListBox.RowTagAt(index)
+		      If rowPlayer.Id <> player.Id Then Continue For index
+		      
+		      PlayerListBox.CellTextAt(index, 0) = player.Score.ToString
+		      PlayerListBox.CellTextAt(index, 1) = player.Name
+		      PlayerListBox.CellTextAt(index, 2) = player.BestAttempt
+		      PlayerListBox.CellTextAt(index, 3) = player.Attempts.ToString + "/6"
+		      Continue For player
+		    Next index
+		    
+		    PlayerListBox.AddRow(player.Score.ToString, player.Name, player.BestAttempt, player.Attempts.ToString)
+		    PlayerListBox.RowTagAt(PlayerListBox.LastAddedRowIndex) = player
+		  Next player
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub RefreshPlayerPosition()
+		  Var playerPosition As Integer = 0
+		  
+		  For index As Integer = PlayerListBox.RowCount - 1 DownTo 0
+		    Var player As MultiplayerGamePlayer = PlayerListBox.RowTagAt(index)
+		    If player.Id <> Session.Player.Id Then Continue
+		    
+		    playerPosition = index + 1
+		    PlayerPositionLabel.Text = "Your position: " + If(player.Score = 0, "n/a", playerPosition.ToString)
+		    Return
+		  Next
+		End Sub
+	#tag EndMethod
 
 
 #tag EndWindowCode
@@ -280,6 +341,56 @@ End
 		  Else
 		    Controller.AddOneLetter(caption)
 		  End Select
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events Controller
+	#tag Event
+		Sub GameOver()
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Guess(bestScore As Integer, bestAttempt As String)
+		  Session.Player.Attempts = Session.Player.Attempts + 1
+		  Session.Player.BestAttempt = bestAttempt
+		  Session.Player.Score = bestScore
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events PlayerListBox
+	#tag Event
+		Sub Opening()
+		  PlayerListBox.ColumnSortDirectionAt(0) = WebListBox.SortDirections.Descending
+		  RefreshPlayerList
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events RefreshPlayerListTimer
+	#tag Event
+		Sub Run()
+		  RefreshPlayerList
+		  RefreshPlayerPosition
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events SecondsTimer
+	#tag Event
+		Sub Run()
+		  Var state As MultiplayerGame.States = App.GlobalGame.State
+		  Var shouldEnable As Boolean = state = MultiplayerGame.States.InProgress
+		  If grid.Enabled <> shouldEnable Then
+		    Grid.Enabled = shouldEnable
+		    Controller.ResetGui
+		  End If
+		  
+		  If RemainingTimeLabel.Text = App.GlobalGame.RemainingTimeLabelText Then Return
+		  RemainingTimeLabel.Text = App.GlobalGame.RemainingTimeLabelText
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Opening()
+		  Me.Period = System.Random.InRange(250, 450)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
