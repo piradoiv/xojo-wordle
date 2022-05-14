@@ -25,6 +25,20 @@ Protected Class MultiplayerGame
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h21
+		Private Function GetWinnerPlayer() As MultiplayerGamePlayer
+		  Var bestScore As Integer = 0
+		  Var winner As MultiplayerGamePlayer
+		  
+		  For index As Integer = Players.LastIndex DownTo 0
+		    Var player As MultiplayerGamePlayer = Players(index)
+		    If player.Score > bestScore Then winner = player
+		  Next
+		  
+		  Return winner
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Sub RemovePlayer(playerId As String)
 		  For index As Integer = Players.LastIndex DownTo 0
@@ -39,23 +53,18 @@ Protected Class MultiplayerGame
 
 	#tag Method, Flags = &h0
 		Sub RestartGame()
-		  For index As Integer = Players.LastIndex DownTo 0
-		    Var player As MultiplayerGamePlayer = Players(index)
-		    player.Score = 0
-		    player.Attempts = 0
-		    player.BestAttempt = "⬜️⬜️⬜️⬜️⬜️"
-		    player.CompletedAt = Nil
-		  Next index
-		  
 		  State = States.WaitingForPlayers
 		  Var now As DateTime = DateTime.Now
-		  StartTime = now.AddInterval(0, 0, 0, 0, 0, 30)
-		  FinishTime = now.AddInterval(0, 0, 0, 0, 3, 30)
+		  
+		  Const kCooldown = 30
+		  StartTime = now.AddInterval(0, 0, 0, 0, 0, kCooldown)
+		  FinishTime = now.AddInterval(0, 0, 0, 0, 3, kCooldown)
 		  
 		  PeriodicTimer = New Timer
 		  AddHandler PeriodicTimer.Action, WeakAddressOf TimerActionHandler
 		  PeriodicTimer.Period = 1000
 		  PeriodicTimer.RunMode = Timer.RunModes.Multiple
+		  WordToGuess = WordleDictionary.GetRandomWord
 		End Sub
 	#tag EndMethod
 
@@ -67,22 +76,32 @@ Protected Class MultiplayerGame
 		  
 		  If now <= StartTime Then
 		    diff = StartTime - now
-		    RemainingTimeLabelText = "Game will begin in: " + diff.Minutes.ToString("00") + ":" + diff.Seconds.ToString("00")
+		    RemainingTimeLabelText = "Next game starts in: " + diff.Minutes.ToString("00") + ":" + diff.Seconds.ToString("00")
 		    State = MultiplayerGame.States.WaitingForPlayers
 		    Return
 		  End If
 		  
 		  diff = FinishTime - now
-		  RemainingTimeLabelText = "Time to guess the word: " + diff.Minutes.ToString("00") + ":" + diff.Seconds.ToString("00")
+		  RemainingTimeLabelText = "Guess the word: " + diff.Minutes.ToString("00") + ":" + Max(0, diff.Seconds).ToString("00")
 		  
 		  Select Case diffSeconds
 		  Case Is > 0
+		    If State <> MultiplayerGame.States.InProgress Then
+		      For index As Integer = Players.LastIndex DownTo 0
+		        Var player As MultiplayerGamePlayer = Players(index)
+		        player.Score = 0
+		        player.Attempts = 0
+		        player.BestAttempt = "⬜️⬜️⬜️⬜️⬜️"
+		        player.CompletedAt = Nil
+		      Next index
+		    End If
+		    
 		    State = MultiplayerGame.States.InProgress
 		  Case Is <= 0
 		    State = MultiplayerGame.States.Finished
-		    If diffSeconds <= -5 Then
-		      RestartGame
-		    End If
+		    LastWinner = GetWinnerPlayer
+		    If LastWinner <> Nil Then LastWinner.GamesWon = LastWinner.GamesWon + 1
+		    RestartGame
 		  End Select
 		End Sub
 	#tag EndMethod
@@ -90,6 +109,10 @@ Protected Class MultiplayerGame
 
 	#tag Property, Flags = &h21
 		Private FinishTime As DateTime
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		LastWinner As MultiplayerGamePlayer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -126,6 +149,10 @@ Protected Class MultiplayerGame
 		#tag EndSetter
 		State As States
 	#tag EndComputedProperty
+
+	#tag Property, Flags = &h0
+		WordToGuess As String
+	#tag EndProperty
 
 
 	#tag Enum, Name = States, Type = Integer, Flags = &h0

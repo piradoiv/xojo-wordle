@@ -13,6 +13,10 @@ Protected Class MultiplayerGamePlayer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		GamesWon As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		Id As String
 	#tag EndProperty
 

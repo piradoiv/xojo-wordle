@@ -5,7 +5,7 @@ Inherits WebToolbar
 		Sub Opening()
 		  Me.Title = "Wordle"
 		  
-		  Var help As WebToolbarItem = New WebToolbarButton("Help")
+		  Var help As WebToolbarItem = New WebToolbarButton("How to play")
 		  help.Tag = "help"
 		  Me.AddItem(help)
 		End Sub

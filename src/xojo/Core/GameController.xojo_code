@@ -130,12 +130,12 @@ Inherits WebSDKControl
 		    Select Case newValue
 		    Case "correct"
 		      newState = GridLetter.States.Correct
-		      guessScore = guessScore + 20
+		      guessScore = guessScore + 10 * (6 - Attempts.Count)
 		    Case "failed"
 		      newState = GridLetter.States.Failed
 		    Case "miss"
 		      newState = If(pendingLetters.IndexOf(letter) <> -1, GridLetter.States.Miss, GridLetter.States.Failed)
-		      guessScore = guessScore + 1
+		      guessScore = guessScore + 4 * (6 - Attempts.Count)
 		    End Select
 		    
 		    Var indexToRemove As Integer = pendingLetters.IndexOf(letter)
@@ -150,6 +150,8 @@ Inherits WebSDKControl
 		  
 		  Row = Row + 1
 		  Column = 0
+		  
+		  If word = WordToGuess Then guessScore = guessScore + 50
 		  
 		  If guessScore > BestGuessScore Then
 		    BestGuessScore = guessScore
@@ -171,14 +173,12 @@ Inherits WebSDKControl
 		  
 		  If word = WordToGuess Then
 		    CanContinue = False
-		    MessageBox("Nice one!")
-		    GameOver
+		    WordDiscovered
 		    Return
 		  End If
 		  
 		  If Row > 5 Then
 		    CanContinue = False
-		    MessageBox("Awww, Game Over. The word was: " + WordToGuess)
 		    GameOver
 		    Return
 		  End If
@@ -270,6 +270,10 @@ Inherits WebSDKControl
 
 	#tag Hook, Flags = &h0
 		Event Opening()
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event WordDiscovered()
 	#tag EndHook
 
 

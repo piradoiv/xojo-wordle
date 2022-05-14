@@ -226,6 +226,18 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events Controller
+	#tag Event
+		Sub GameOver()
+		  MessageBox("Game over, the word was: " + Me.WordToGuess)
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub WordDiscovered()
+		  MessageBox("Nice one! the word was: " + Me.WordToGuess)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="_mPanelIndex"

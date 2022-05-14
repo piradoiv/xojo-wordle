@@ -182,8 +182,8 @@ Begin WebPage MultiplayerGameWebPage
       _mPanelIndex    =   -1
    End
    Begin WebListBox PlayerListBox
-      ColumnCount     =   4
-      ColumnWidths    =   "20%,20%,30%,30%"
+      ColumnCount     =   5
+      ColumnWidths    =   "0%,0%,0%,0%,0%"
       ControlID       =   ""
       Enabled         =   True
       HasHeader       =   True
@@ -191,7 +191,7 @@ Begin WebPage MultiplayerGameWebPage
       HighlightSortedColumn=   True
       Index           =   -2147483648
       Indicator       =   ""
-      InitialValue    =   "Score	Name	Best Attempt	Attempts"
+      InitialValue    =   "Score	Name	Best Attempt	Attempts	Games Won"
       LastAddedRowIndex=   0
       Left            =   460
       LockBottom      =   False
@@ -301,10 +301,12 @@ End
 		      PlayerListBox.CellTextAt(index, 1) = player.Name
 		      PlayerListBox.CellTextAt(index, 2) = player.BestAttempt
 		      PlayerListBox.CellTextAt(index, 3) = player.Attempts.ToString + "/6"
+		      PlayerListBox.CellTextAt(index, 4) = player.GamesWon.ToString
 		      Continue For player
 		    Next index
 		    
-		    PlayerListBox.AddRow(player.Score.ToString, player.Name, player.BestAttempt, player.Attempts.ToString)
+		    PlayerListBox.AddRow(player.Score.ToString, player.Name, player.BestAttempt, _
+		    player.Attempts.ToString, player.GamesWon.ToString)
 		    PlayerListBox.RowTagAt(PlayerListBox.LastAddedRowIndex) = player
 		  Next player
 		End Sub
@@ -324,6 +326,11 @@ End
 		  Next
 		End Sub
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		CurrentState As MultiplayerGame.States = MultiplayerGame.States.Finished
+	#tag EndProperty
 
 
 #tag EndWindowCode
@@ -347,7 +354,7 @@ End
 #tag Events Controller
 	#tag Event
 		Sub GameOver()
-		  
+		  MessageBox("Game over, the word was: " + Me.WordToGuess)
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -355,6 +362,11 @@ End
 		  Session.Player.Attempts = Session.Player.Attempts + 1
 		  Session.Player.BestAttempt = bestAttempt
 		  Session.Player.Score = bestScore
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub WordDiscovered()
+		  MessageBox("Nice one! the word was: " + Me.WordToGuess)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -379,7 +391,21 @@ End
 		Sub Run()
 		  Var state As MultiplayerGame.States = App.GlobalGame.State
 		  Var shouldEnable As Boolean = state = MultiplayerGame.States.InProgress
-		  If grid.Enabled <> shouldEnable Then
+		  
+		  If CurrentState <> state And state = MultiplayerGame.States.WaitingForPlayers Then
+		    Var winner As MultiplayerGamePlayer = App.GlobalGame.LastWinner
+		    If winner <> Nil Then
+		      MessageBox(If(winner.Id = Session.Player.Id, "You", winner.Name) + " won this game!")
+		    End If
+		  End If
+		  CurrentState = state
+		  
+		  If Controller.Enabled <> shouldEnable Then
+		    Controller.Enabled = shouldEnable
+		    Controller.WordToGuess = App.GlobalGame.WordToGuess
+		  End If
+		  
+		  If Grid.Enabled <> shouldEnable Then
 		    Grid.Enabled = shouldEnable
 		    Controller.ResetGui
 		  End If
