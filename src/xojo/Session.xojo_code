@@ -8,9 +8,21 @@ Inherits WebSession
   AllowTabOrderWrap=True
 #tag EndSession
 	#tag Event
+		Sub Closing(appQuitting as Boolean)
+		  App.GlobalGame.RemovePlayer(Identifier)
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Opening()
 		  Player = New MultiplayerGamePlayer
 		  Player.Id = Identifier
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub UserDisconnected()
+		  App.GlobalGame.RemovePlayer(Identifier)
 		End Sub
 	#tag EndEvent
 

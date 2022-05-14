@@ -5,6 +5,10 @@ Protected Class MultiplayerGamePlayer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		AttemptSquares() As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		BestAttempt As String = "⬜️⬜️⬜️⬜️⬜️"
 	#tag EndProperty
 

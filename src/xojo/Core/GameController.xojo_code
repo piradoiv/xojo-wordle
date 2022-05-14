@@ -130,12 +130,12 @@ Inherits WebSDKControl
 		    Select Case newValue
 		    Case "correct"
 		      newState = GridLetter.States.Correct
-		      guessScore = guessScore + 10 * (6 - Attempts.Count)
+		      guessScore = guessScore + 10
 		    Case "failed"
 		      newState = GridLetter.States.Failed
 		    Case "miss"
 		      newState = If(pendingLetters.IndexOf(letter) <> -1, GridLetter.States.Miss, GridLetter.States.Failed)
-		      guessScore = guessScore + 4 * (6 - Attempts.Count)
+		      guessScore = guessScore + 4
 		    End Select
 		    
 		    Var indexToRemove As Integer = pendingLetters.IndexOf(letter)
@@ -152,24 +152,27 @@ Inherits WebSDKControl
 		  Column = 0
 		  
 		  If word = WordToGuess Then guessScore = guessScore + 50
+		  guessScore = guessScore - Attempts.Count
+		  
+		  Var attemptSquares As String = ""
+		  For Each letter As GridLetter In rowLetters
+		    Select Case letter.State
+		    Case GridLetter.States.Correct
+		      attemptSquares = attemptSquares + "🟩"
+		    Case GridLetter.States.Miss
+		      attemptSquares = attemptSquares + "🟨"
+		    Else
+		      attemptSquares = attemptSquares + "⬜️"
+		    End Select
+		  Next
 		  
 		  If guessScore > BestGuessScore Then
 		    BestGuessScore = guessScore
-		    Var attemptSquares As String = ""
-		    For Each letter As GridLetter In rowLetters
-		      Select Case letter.State
-		      Case GridLetter.States.Correct
-		        attemptSquares = attemptSquares + "🟩"
-		      Case GridLetter.States.Miss
-		        attemptSquares = attemptSquares + "🟨"
-		      Else
-		        attemptSquares = attemptSquares + "⬜️"
-		      End Select
-		    Next
 		    BestAttempt = attemptSquares
 		  End If
 		  
 		  Guess(BestGuessScore, BestAttempt)
+		  Attempts.Add(attemptSquares)
 		  
 		  If word = WordToGuess Then
 		    CanContinue = False
@@ -277,8 +280,8 @@ Inherits WebSDKControl
 	#tag EndHook
 
 
-	#tag Property, Flags = &h21
-		Private Attempts() As String
+	#tag Property, Flags = &h0
+		Attempts() As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

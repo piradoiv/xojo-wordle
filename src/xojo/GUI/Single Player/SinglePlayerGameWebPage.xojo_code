@@ -229,12 +229,12 @@ End
 #tag Events Controller
 	#tag Event
 		Sub GameOver()
-		  MessageBox("Game over, the word was: " + Me.WordToGuess)
+		  MessageBox("Game over, the word was: " + Me.WordToGuess + ".")
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub WordDiscovered()
-		  MessageBox("Nice one! the word was: " + Me.WordToGuess)
+		  MessageBox("Nice one! the word was: " + Me.WordToGuess + ".")
 		End Sub
 	#tag EndEvent
 #tag EndEvents

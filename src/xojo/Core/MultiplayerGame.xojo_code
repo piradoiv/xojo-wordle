@@ -76,7 +76,7 @@ Protected Class MultiplayerGame
 		  
 		  If now <= StartTime Then
 		    diff = StartTime - now
-		    RemainingTimeLabelText = "Next game starts in: " + diff.Minutes.ToString("00") + ":" + diff.Seconds.ToString("00")
+		    RemainingTimeLabelText = "Next game begins in: " + diff.Minutes.ToString("00") + ":" + diff.Seconds.ToString("00")
 		    State = MultiplayerGame.States.WaitingForPlayers
 		    Return
 		  End If
@@ -105,6 +105,11 @@ Protected Class MultiplayerGame
 		  End Select
 		End Sub
 	#tag EndMethod
+
+
+	#tag Hook, Flags = &h0
+		Event NewState(state As MultiplayerGame.States)
+	#tag EndHook
 
 
 	#tag Property, Flags = &h21
@@ -145,6 +150,7 @@ Protected Class MultiplayerGame
 			Set
 			  If mState = value Then Return
 			  mState = value
+			  NewState(value)
 			End Set
 		#tag EndSetter
 		State As States
