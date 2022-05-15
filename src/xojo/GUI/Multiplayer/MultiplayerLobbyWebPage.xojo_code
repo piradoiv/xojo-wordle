@@ -59,7 +59,7 @@ Begin WebPage MultiplayerLobbyWebPage
       Begin WebTextField GameNameTextField
          AllowAutoComplete=   False
          AllowSpellChecking=   False
-         Caption         =   "Your name:"
+         Caption         =   "Your alias:"
          ControlID       =   ""
          Enabled         =   True
          FieldType       =   0
@@ -76,7 +76,7 @@ Begin WebPage MultiplayerLobbyWebPage
          LockRight       =   False
          LockTop         =   True
          LockVertical    =   False
-         MaximumCharactersAllowed=   0
+         MaximumCharactersAllowed=   9
          Parent          =   "ContainerRectangle"
          ReadOnly        =   False
          Scope           =   0
@@ -203,6 +203,35 @@ End
 #tag EndWebPage
 
 #tag WindowCode
+	#tag Method, Flags = &h21
+		Private Function ValidateName() As Boolean
+		  Var name As String = GameNameTextField.Text.Trim
+		  Var valid As Boolean = True
+		  Var error As String = ""
+		  
+		  If name.Length > GameNameTextField.MaximumCharactersAllowed Then
+		    valid = False
+		    error = "The name is too long, it should be " + GameNameTextField.MaximumCharactersAllowed.ToString + _
+		    " chars or shorter."
+		  End If
+		  
+		  Var validationRegex As New RegEx
+		  validationRegex.SearchPattern = "[^\w\s]+"
+		  validationRegex.Options.CaseSensitive = False
+		  Var match As RegExMatch = validationRegex.Search(name)
+		  If match <> Nil Then
+		    valid = False
+		    error = "Your name can only contain numbers, letters and spaces."
+		  End If
+		  
+		  If valid Then Return True
+		  
+		  MessageBox(error)
+		  Return False
+		End Function
+	#tag EndMethod
+
+
 #tag EndWindowCode
 
 #tag Events GameNameTextField
@@ -216,6 +245,10 @@ End
 #tag Events EnterButton
 	#tag Event
 		Sub Pressed()
+		  If Not ValidateName Then
+		    Return
+		  End If
+		  
 		  Session.Player.Name = GameNameTextField.Text.Sanitize.Trim
 		  App.GlobalGame.AddPlayer(Session.Player)
 		  MultiplayerGameWebPage.Show
