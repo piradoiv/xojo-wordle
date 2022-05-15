@@ -61,7 +61,7 @@ Protected Class MultiplayerGame
 		  
 		  Const kCooldown = 30
 		  StartTime = now.AddInterval(0, 0, 0, 0, 0, kCooldown)
-		  FinishTime = now.AddInterval(0, 0, 0, 0, 3, kCooldown)
+		  FinishTime = now.AddInterval(0, 0, 0, 0, 2, kCooldown)
 		  
 		  PeriodicTimer = New Timer
 		  AddHandler PeriodicTimer.Action, WeakAddressOf TimerActionHandler
@@ -115,8 +115,8 @@ Protected Class MultiplayerGame
 	#tag EndHook
 
 
-	#tag Property, Flags = &h21
-		Private FinishTime As DateTime
+	#tag Property, Flags = &h0
+		FinishTime As DateTime
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -219,7 +219,7 @@ Protected Class MultiplayerGame
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="State"
@@ -227,7 +227,13 @@ Protected Class MultiplayerGame
 			Group="Behavior"
 			InitialValue=""
 			Type="States"
-			EditorType=""
+			EditorType="Enum"
+			#tag EnumValues
+				"0 - WaitingForPlayers"
+				"1 - Starting"
+				"2 - InProgress"
+				"3 - Finished"
+			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="WordToGuess"
@@ -235,7 +241,7 @@ Protected Class MultiplayerGame
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

@@ -4,7 +4,7 @@ Begin WebPage MultiplayerGameWebPage
    Compatibility   =   ""
    ControlID       =   ""
    Enabled         =   False
-   Height          =   938
+   Height          =   880
    ImplicitInstance=   True
    Index           =   -2147483648
    Indicator       =   0
@@ -18,7 +18,7 @@ Begin WebPage MultiplayerGameWebPage
    LockRight       =   False
    LockTop         =   True
    LockVertical    =   False
-   MinimumHeight   =   630
+   MinimumHeight   =   880
    MinimumWidth    =   960
    TabIndex        =   0
    Title           =   "Multiplayer Wordle"
@@ -34,12 +34,12 @@ Begin WebPage MultiplayerGameWebPage
       ControlID       =   ""
       Enabled         =   True
       HasBackgroundColor=   False
-      Height          =   725
+      Height          =   641
       Index           =   -2147483648
       Indicator       =   ""
       LayoutDirection =   0
       LayoutType      =   0
-      Left            =   20
+      Left            =   63
       LockBottom      =   False
       LockedInPosition=   False
       LockHorizontal  =   True
@@ -50,46 +50,12 @@ Begin WebPage MultiplayerGameWebPage
       Scope           =   0
       TabIndex        =   8
       Tooltip         =   ""
-      Top             =   140
+      Top             =   118
       Visible         =   True
-      Width           =   986
+      Width           =   900
       _mDesignHeight  =   0
       _mDesignWidth   =   0
       _mPanelIndex    =   -1
-      Begin WebLabel PlayerPositionLabel
-         Bold            =   False
-         ControlID       =   ""
-         Enabled         =   True
-         FontName        =   ""
-         FontSize        =   0.0
-         Height          =   38
-         Index           =   -2147483648
-         Indicator       =   ""
-         Italic          =   False
-         Left            =   40
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockHorizontal  =   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         LockVertical    =   False
-         Multiline       =   False
-         Parent          =   "Rectangle1"
-         Scope           =   2
-         TabIndex        =   0
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   "Your position: n/a"
-         TextAlignment   =   2
-         TextColor       =   &c00000000
-         Tooltip         =   ""
-         Top             =   160
-         Underline       =   False
-         Visible         =   True
-         Width           =   380
-         _mPanelIndex    =   -1
-      End
       Begin GameGrid Grid
          ControlID       =   ""
          Enabled         =   True
@@ -98,7 +64,7 @@ Begin WebPage MultiplayerGameWebPage
          Indicator       =   0
          LayoutDirection =   0
          LayoutType      =   0
-         Left            =   40
+         Left            =   83
          LockBottom      =   False
          LockedInPosition=   False
          LockHorizontal  =   False
@@ -113,60 +79,26 @@ Begin WebPage MultiplayerGameWebPage
          TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   206
+         Top             =   138
          Visible         =   True
          Width           =   380
          _mDesignHeight  =   0
          _mDesignWidth   =   0
          _mPanelIndex    =   -1
       End
-      Begin WebLabel GameRankingLabel
-         Bold            =   False
-         ControlID       =   ""
-         Enabled         =   True
-         FontName        =   ""
-         FontSize        =   0.0
-         Height          =   38
-         Index           =   -2147483648
-         Indicator       =   ""
-         Italic          =   False
-         Left            =   440
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockHorizontal  =   False
-         LockLeft        =   True
-         LockRight       =   True
-         LockTop         =   True
-         LockVertical    =   False
-         Multiline       =   False
-         Parent          =   "Rectangle1"
-         Scope           =   2
-         TabIndex        =   2
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Text            =   "Current game ranking:"
-         TextAlignment   =   2
-         TextColor       =   &c00000000
-         Tooltip         =   ""
-         Top             =   160
-         Underline       =   False
-         Visible         =   True
-         Width           =   546
-         _mPanelIndex    =   -1
-      End
       Begin WebListBox PlayerListBox
-         ColumnCount     =   5
-         ColumnWidths    =   "0%,0%,0%,0%,0%"
+         ColumnCount     =   4
+         ColumnWidths    =   "0%,0%,0%,0%"
          ControlID       =   ""
          Enabled         =   True
          HasHeader       =   True
-         Height          =   630
+         Height          =   600
          HighlightSortedColumn=   True
          Index           =   -2147483648
          Indicator       =   ""
-         InitialValue    =   "Score	Name	Best Attempt	Attempts	Games Won"
+         InitialValue    =   "Score	Name	Best Attempt	Won"
          LastAddedRowIndex=   0
-         Left            =   440
+         Left            =   483
          LockBottom      =   False
          LockedInPosition=   False
          LockHorizontal  =   False
@@ -187,9 +119,9 @@ Begin WebPage MultiplayerGameWebPage
          TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   206
+         Top             =   138
          Visible         =   True
-         Width           =   546
+         Width           =   460
          _mPanelIndex    =   -1
       End
       Begin GameKeyboard Keyboard
@@ -200,7 +132,7 @@ Begin WebPage MultiplayerGameWebPage
          Indicator       =   0
          LayoutDirection =   0
          LayoutType      =   0
-         Left            =   40
+         Left            =   83
          LockBottom      =   False
          LockedInPosition=   False
          LockHorizontal  =   False
@@ -215,7 +147,7 @@ Begin WebPage MultiplayerGameWebPage
          TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   686
+         Top             =   610
          Visible         =   True
          Width           =   380
          _mDesignHeight  =   0
@@ -248,7 +180,7 @@ Begin WebPage MultiplayerGameWebPage
       TextAlignment   =   2
       TextColor       =   &c00000000
       Tooltip         =   ""
-      Top             =   80
+      Top             =   72
       Underline       =   False
       Visible         =   True
       Width           =   986
@@ -264,12 +196,12 @@ Begin WebPage MultiplayerGameWebPage
       Left            =   0.0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   0.0
+      Top             =   -43.0
       WordToGuess     =   ""
       YellowKeys      =   0
       _mPanelIndex    =   -1
    End
-   Begin MultiplayerWordleToolbar PageToolbar
+   Begin AppToolbar PageToolbar
       ControlID       =   ""
       Enabled         =   True
       FullWidth       =   False
@@ -304,7 +236,7 @@ Begin WebPage MultiplayerGameWebPage
       Period          =   2500
       RunMode         =   2
       Scope           =   0
-      Top             =   0.0
+      Top             =   -43.0
       _mPanelIndex    =   -1
    End
    Begin WebTimer SecondsTimer
@@ -317,7 +249,63 @@ Begin WebPage MultiplayerGameWebPage
       Period          =   500
       RunMode         =   2
       Scope           =   2
-      Top             =   0.0
+      Top             =   -43.0
+      _mPanelIndex    =   -1
+   End
+   Begin WebImageViewer MadeWithXojoLogo
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   80
+      HorizontalAlignment=   2
+      Index           =   -2147483648
+      Indicator       =   ""
+      Left            =   363
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   True
+      LockLeft        =   False
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Picture         =   140148735
+      Scope           =   0
+      SVGData         =   ""
+      TabIndex        =   9
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   775
+      URL             =   ""
+      VerticalAlignment=   2
+      Visible         =   True
+      Width           =   300
+      _mPanelIndex    =   -1
+      _ProtectImage   =   False
+   End
+   Begin ForkMeAtGitHubBanner ForkMe
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   200
+      HTML            =   ""
+      Index           =   -2147483648
+      indicator       =   0
+      Left            =   826
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      LockVertical    =   False
+      PanelIndex      =   0
+      Scope           =   2
+      TabIndex        =   10
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   0
+      URL             =   ""
+      UseSandbox      =   False
+      Visible         =   True
+      Width           =   200
       _mPanelIndex    =   -1
    End
 End
@@ -352,31 +340,16 @@ End
 		      
 		      PlayerListBox.CellTextAt(index, 0) = player.Score.ToString
 		      PlayerListBox.CellTextAt(index, 1) = player.Name
-		      PlayerListBox.CellTextAt(index, 2) = player.BestAttempt
-		      PlayerListBox.CellTextAt(index, 3) = player.Attempts.ToString + "/6"
-		      PlayerListBox.CellTextAt(index, 4) = If(player.GamesWon > 0, "🏆 ", "") + player.GamesWon.ToString
+		      PlayerListBox.CellTextAt(index, 2) = player.BestAttempt + " " + player.Attempts.ToString + "/6"
+		      PlayerListBox.CellTextAt(index, 3) = If(player.GamesWon > 0, "🏆 ", "") + player.GamesWon.ToString
 		      Continue For player
 		    Next index
 		    
-		    PlayerListBox.AddRow(player.Score.ToString, player.Name, player.BestAttempt, _
-		    player.Attempts.ToString, If(player.GamesWon > 0, "🏆 ", "") + player.GamesWon.ToString)
+		    PlayerListBox.AddRow(player.Score.ToString, player.Name, _
+		    player.BestAttempt + " " + player.Attempts.ToString + "/6", _
+		    If(player.GamesWon > 0, "🏆 ", "") + player.GamesWon.ToString)
 		    PlayerListBox.RowTagAt(PlayerListBox.LastAddedRowIndex) = player
 		  Next player
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub RefreshPlayerPosition()
-		  Var playerPosition As Integer = 0
-		  
-		  For index As Integer = PlayerListBox.RowCount - 1 DownTo 0
-		    Var player As MultiplayerGamePlayer = PlayerListBox.RowTagAt(index)
-		    If player.Id <> Session.Player.Id Then Continue
-		    
-		    playerPosition = index + 1
-		    PlayerPositionLabel.Text = "Your position: " + If(player.Score = 0, "n/a", playerPosition.ToString)
-		    Return
-		  Next
 		End Sub
 	#tag EndMethod
 
@@ -428,6 +401,8 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub WordDiscovered()
+		  Var bonus As Integer = App.GlobalGame.FinishTime.SecondsFrom1970 - DateTime.Now.SecondsFrom1970
+		  Session.Player.Score = Session.Player.Score + bonus
 		  MessageBox("Nice one! the word was: " + Me.WordToGuess + ".")
 		End Sub
 	#tag EndEvent
@@ -436,7 +411,6 @@ End
 	#tag Event
 		Sub Run()
 		  RefreshPlayerList
-		  RefreshPlayerPosition
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -451,7 +425,7 @@ End
 		    If winner <> Nil Then
 		      MessageBox(If(winner.Id = Session.Player.Id, "You", winner.Name) + " won this game!" + _
 		      EndOfLine + EndOfLine + "The word was '" + Controller.WordToGuess + "'." + _
-		      EndOfLine + String.FromArray(winner.AttemptSquares, EndOfLine))
+		      EndOfLine + String.FromArray(Session.Player.AttemptSquares, EndOfLine))
 		    End If
 		  End If
 		  CurrentState = state
@@ -473,6 +447,19 @@ End
 	#tag Event
 		Sub Opening()
 		  Me.Period = System.Random.InRange(250, 450)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events MadeWithXojoLogo
+	#tag Event
+		Sub Pressed(x as Integer, y as Integer)
+		  GoToURL("https://xojo.com/", True)
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Opening()
+		  Me.Style.Value("background-size") = "contain"
+		  Me.Style.Cursor = WebStyle.Cursors.Pointer
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -28,7 +28,6 @@ Begin WebPage WelcomeWebPage
    _ImplicitInstance=   False
    _mDesignHeight  =   0
    _mDesignWidth   =   0
-   _mName          =   ""
    _mPanelIndex    =   -1
    Begin WebRectangle WelcomeRectangle
       BackgroundColor =   &cFFFFFF00
@@ -141,7 +140,7 @@ Begin WebPage WelcomeWebPage
          LockRight       =   False
          LockTop         =   True
          LockVertical    =   False
-         PanelIndex      =   0
+         PanelIndex      =   "0"
          Parent          =   "WelcomeRectangle"
          Scope           =   0
          TabIndex        =   3
@@ -172,7 +171,7 @@ Begin WebPage WelcomeWebPage
          LockRight       =   False
          LockTop         =   True
          LockVertical    =   False
-         PanelIndex      =   0
+         PanelIndex      =   "0"
          Parent          =   "WelcomeRectangle"
          Scope           =   0
          TabIndex        =   4
@@ -209,6 +208,58 @@ Begin WebPage WelcomeWebPage
       Width           =   300
       _mDesignHeight  =   0
       _mDesignWidth   =   0
+      _mPanelIndex    =   -1
+   End
+   Begin AppToolbar PageToolbar
+      ControlID       =   ""
+      Enabled         =   True
+      FullWidth       =   False
+      Height          =   56
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   0
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      LockVertical    =   False
+      Position        =   0
+      Scope           =   0
+      TabIndex        =   6
+      TabStop         =   True
+      Title           =   ""
+      Tooltip         =   ""
+      Top             =   0
+      Visible         =   True
+      Width           =   600
+      _mPanelIndex    =   -1
+   End
+   Begin ForkMeAtGitHubBanner ForkMe
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   200
+      HTML            =   ""
+      Index           =   -2147483648
+      Indicator       =   ""
+      Left            =   400
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   7
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   0
+      URL             =   ""
+      UseSandbox      =   False
+      Visible         =   True
+      Width           =   200
       _mPanelIndex    =   -1
    End
 End

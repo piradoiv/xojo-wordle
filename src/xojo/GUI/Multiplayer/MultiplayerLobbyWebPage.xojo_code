@@ -147,7 +147,7 @@ Begin WebPage MultiplayerLobbyWebPage
       _mDesignWidth   =   0
       _mPanelIndex    =   -1
    End
-   Begin MultiplayerWordleToolbar PageToolbar
+   Begin AppToolbar PageToolbar
       ControlID       =   ""
       Enabled         =   True
       FullWidth       =   False
@@ -170,6 +170,33 @@ Begin WebPage MultiplayerLobbyWebPage
       Top             =   0
       Visible         =   True
       Width           =   614
+      _mPanelIndex    =   -1
+   End
+   Begin ForkMeAtGitHubBanner ForkMe
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   200
+      HTML            =   ""
+      Index           =   -2147483648
+      indicator       =   0
+      Left            =   414
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   True
+      LockVertical    =   False
+      PanelIndex      =   0
+      Scope           =   2
+      TabIndex        =   7
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   0
+      URL             =   ""
+      UseSandbox      =   False
+      Visible         =   True
+      Width           =   200
       _mPanelIndex    =   -1
    End
 End

@@ -1,19 +1,43 @@
 #tag Class
-Protected Class SinglePlayerWordleToolbar
+Protected Class AppToolbar
 Inherits WebToolbar
 	#tag Event
 		Sub Opening()
-		  Var restart As WebToolbarItem = New WebToolbarButton("Restart")
-		  restart.Tag = "restart"
-		  Me.AddItem(restart)
+		  Me.Title = "Wordle"
+		  Me.Indicator = WebUIControl.Indicators.Dark
 		  
-		  Var help As WebToolbarItem = New WebToolbarButton("Help")
+		  Var singlePlayer As New WebToolbarButton("Single Player")
+		  singlePlayer.Tag = "singlePlayer"
+		  Me.AddItem(singlePlayer)
+		  
+		  Var multiplayer As New WebToolbarButton("Multiplayer")
+		  multiplayer.Tag = "multiplayer"
+		  Me.AddItem(multiplayer)
+		  
+		  Var help As New WebToolbarButton("How to play")
 		  help.Tag = "help"
 		  Me.AddItem(help)
-		  
-		  Var stopServer As New WebToolbarButton("Stop Server")
-		  stopServer.Tag = "stop_server"
-		  Me.AddItem(stopServer)
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Pressed(Item as WebToolbarButton)
+		  Select Case Item.Tag
+		  Case "singlePlayer"
+		    SinglePlayerGameWebPage.Show
+		  Case "multiplayer"
+		    MultiplayerLobbyWebPage.Show
+		  Case "help"
+		    Var d As New TutorialWebDialog
+		    d.Show
+		  End Select
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub TitlePressed()
+		  Session.CurrentPage.Close
+		  WelcomeWebPage.Show
 		End Sub
 	#tag EndEvent
 
