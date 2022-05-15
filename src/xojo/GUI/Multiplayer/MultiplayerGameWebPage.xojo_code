@@ -261,8 +261,10 @@ Begin WebPage MultiplayerGameWebPage
       Enabled         =   False
       GreenKeys       =   0
       Index           =   -2147483648
+      Left            =   0.0
       LockedInPosition=   False
       Scope           =   2
+      Top             =   0.0
       WordToGuess     =   ""
       YellowKeys      =   0
       _mPanelIndex    =   -1
@@ -296,22 +298,26 @@ Begin WebPage MultiplayerGameWebPage
       ControlID       =   ""
       Enabled         =   True
       Index           =   -2147483648
+      Left            =   0.0
       Location        =   1
       LockedInPosition=   False
       Period          =   2500
       RunMode         =   2
       Scope           =   0
+      Top             =   0.0
       _mPanelIndex    =   -1
    End
    Begin WebTimer SecondsTimer
       ControlID       =   ""
       Enabled         =   True
       Index           =   -2147483648
+      Left            =   0.0
       Location        =   1
       LockedInPosition=   False
       Period          =   500
       RunMode         =   2
       Scope           =   2
+      Top             =   0.0
       _mPanelIndex    =   -1
    End
 End
@@ -393,7 +399,7 @@ End
 #tag Events Keyboard
 	#tag Event
 		Sub Pressed(caption As String)
-		  If Not Grid.Enabled Then Return
+		  If App.GlobalGame.State <> MultiplayerGame.States.InProgress Then Return
 		  
 		  Select Case caption
 		  Case GameKeyboardKey.kEnterCaption
@@ -739,6 +745,12 @@ End
 		Group="Behavior"
 		InitialValue="MultiplayerGame.States.Finished"
 		Type="MultiplayerGame.States"
-		EditorType=""
+		EditorType="Enum"
+		#tag EnumValues
+			"0 - WaitingForPlayers"
+			"1 - Starting"
+			"2 - InProgress"
+			"3 - Finished"
+		#tag EndEnumValues
 	#tag EndViewProperty
 #tag EndViewBehavior

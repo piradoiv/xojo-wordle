@@ -23,6 +23,7 @@ Inherits WebToolbar
 
 	#tag Event
 		Sub TitlePressed()
+		  Self.Close
 		  WelcomeWebPage.Show
 		End Sub
 	#tag EndEvent

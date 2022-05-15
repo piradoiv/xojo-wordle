@@ -192,6 +192,7 @@ End
 		  Session.Player.Name = GameNameTextField.Text.Sanitize.Trim
 		  App.GlobalGame.AddPlayer(Session.Player)
 		  MultiplayerGameWebPage.Show
+		  Self.Close
 		End Sub
 	#tag EndEvent
 #tag EndEvents

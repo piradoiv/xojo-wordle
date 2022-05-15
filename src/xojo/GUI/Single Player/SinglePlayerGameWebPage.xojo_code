@@ -135,14 +135,18 @@ Begin WebPage SinglePlayerGameWebPage
       _mPanelIndex    =   -1
    End
    Begin GameController Controller
+      BestAttempt     =   "⬜️⬜️⬜️⬜️⬜️"
+      BestGuessScore  =   0
       ControlID       =   ""
       Enabled         =   True
+      GreenKeys       =   0
       Index           =   -2147483648
       Left            =   0.0
       LockedInPosition=   False
       Scope           =   2
       Top             =   0.0
       WordToGuess     =   ""
+      YellowKeys      =   0
       _mPanelIndex    =   -1
    End
 End
