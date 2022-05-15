@@ -32,7 +32,10 @@ Protected Class MultiplayerGame
 		  
 		  For index As Integer = Players.LastIndex DownTo 0
 		    Var player As MultiplayerGamePlayer = Players(index)
-		    If player.Score > bestScore Then winner = player
+		    If player.Score > bestScore Then
+		      winner = player
+		      bestScore = player.Score
+		    End If
 		  Next
 		  
 		  Return winner
@@ -211,18 +214,28 @@ Protected Class MultiplayerGame
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="mState"
+			Name="RemainingTimeLabelText"
 			Visible=false
 			Group="Behavior"
-			InitialValue="States.WaitingForPlayers"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="State"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
 			Type="States"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - WaitingForPlayers"
-				"1 - Starting"
-				"2 - InProgress"
-				"3 - Finished"
-			#tag EndEnumValues
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WordToGuess"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
