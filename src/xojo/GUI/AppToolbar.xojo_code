@@ -26,7 +26,11 @@ Inherits WebToolbar
 		  Case "singlePlayer"
 		    SinglePlayerGameWebPage.Show
 		  Case "multiplayer"
-		    MultiplayerLobbyWebPage.Show
+		    If Session.Player <> Nil And Session.Player.Name.Trim <> "" Then
+		      MultiplayerGameWebPage.Show
+		    Else
+		      MultiplayerLobbyWebPage.Show
+		    End If
 		  Case "help"
 		    Var d As New TutorialWebDialog
 		    d.Show
