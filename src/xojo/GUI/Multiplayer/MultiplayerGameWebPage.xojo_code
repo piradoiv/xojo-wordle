@@ -196,7 +196,7 @@ Begin WebPage MultiplayerGameWebPage
       Left            =   0.0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   -43.0
+      Top             =   0.0
       WordToGuess     =   ""
       YellowKeys      =   0
       _mPanelIndex    =   -1
@@ -236,7 +236,7 @@ Begin WebPage MultiplayerGameWebPage
       Period          =   2500
       RunMode         =   2
       Scope           =   0
-      Top             =   -43.0
+      Top             =   0.0
       _mPanelIndex    =   -1
    End
    Begin WebTimer SecondsTimer
@@ -249,7 +249,7 @@ Begin WebPage MultiplayerGameWebPage
       Period          =   500
       RunMode         =   2
       Scope           =   2
-      Top             =   -43.0
+      Top             =   0.0
       _mPanelIndex    =   -1
    End
    Begin WebImageViewer MadeWithXojoLogo
@@ -271,7 +271,6 @@ Begin WebPage MultiplayerGameWebPage
       Scope           =   0
       SVGData         =   ""
       TabIndex        =   9
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   775
       URL             =   ""
@@ -287,7 +286,7 @@ Begin WebPage MultiplayerGameWebPage
       Height          =   200
       HTML            =   ""
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Left            =   826
       LockBottom      =   False
       LockedInPosition=   False
@@ -296,10 +295,8 @@ Begin WebPage MultiplayerGameWebPage
       LockRight       =   True
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   10
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   0
       URL             =   ""

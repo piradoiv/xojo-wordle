@@ -2,6 +2,14 @@
 			Begin BuildStepList Linux
 				Begin BuildProjectStep Build
 				End
+				Begin CopyFilesBuildStep CopyResources
+					AppliesTo = 0
+					Architecture = 0
+					Target = 0
+					Destination = 1
+					Subdirectory = js
+					FolderItem = Li4vLi4vanMvZGlzdC9Xb3JkbGVHYW1lQ29udHJvbGxlci5qcw==
+				End
 			End
 			Begin BuildStepList Mac OS X
 				Begin BuildProjectStep Build

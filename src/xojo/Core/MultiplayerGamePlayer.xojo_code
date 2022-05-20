@@ -1,5 +1,22 @@
 #tag Class
 Protected Class MultiplayerGamePlayer
+	#tag Method, Flags = &h0
+		Function Copy() As MultiplayerGamePlayer
+		  Var result As New MultiplayerGamePlayer
+		  result.Attempts = Attempts
+		  result.AttemptSquares = AttemptSquares
+		  result.BestAttempt = BestAttempt
+		  result.CompletedAt = CompletedAt
+		  result.GamesWon = GamesWon
+		  result.Id = Id
+		  result.Name = Name
+		  result.Score = Score
+		  
+		  Return result
+		End Function
+	#tag EndMethod
+
+
 	#tag Property, Flags = &h0
 		Attempts As Integer = 0
 	#tag EndProperty
@@ -100,6 +117,14 @@ Protected Class MultiplayerGamePlayer
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Attempts"
+			Visible=false
+			Group="Behavior"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="GamesWon"
 			Visible=false
 			Group="Behavior"
 			InitialValue="0"

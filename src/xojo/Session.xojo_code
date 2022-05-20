@@ -9,12 +9,14 @@ Inherits WebSession
 #tag EndSession
 	#tag Event
 		Sub Closing(appQuitting as Boolean)
+		  stdout.WriteLine(CurrentMethodName)
 		  App.GlobalGame.RemovePlayer(Identifier)
 		End Sub
 	#tag EndEvent
 
 	#tag Event
 		Sub Opening()
+		  stdout.WriteLine(CurrentMethodName)
 		  Player = New MultiplayerGamePlayer
 		  Player.Id = Identifier
 		End Sub
@@ -22,6 +24,7 @@ Inherits WebSession
 
 	#tag Event
 		Sub UserDisconnected()
+		  stdout.WriteLine(CurrentMethodName)
 		  App.GlobalGame.RemovePlayer(Identifier)
 		End Sub
 	#tag EndEvent

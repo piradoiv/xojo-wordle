@@ -12,7 +12,12 @@ Protected Class MultiplayerGame
 
 	#tag Method, Flags = &h0
 		Function GetAllPlayers() As MultiplayerGamePlayer()
-		  Return Players
+		  Var result() As MultiplayerGamePlayer
+		  For Each player As MultiplayerGamePlayer In Players
+		    result.Add(player.Copy)
+		  Next player
+		  
+		  Return result
 		End Function
 	#tag EndMethod
 

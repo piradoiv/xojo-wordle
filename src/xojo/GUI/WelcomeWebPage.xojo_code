@@ -228,7 +228,6 @@ Begin WebPage WelcomeWebPage
       Position        =   0
       Scope           =   0
       TabIndex        =   6
-      TabStop         =   True
       Title           =   ""
       Tooltip         =   ""
       Top             =   0
@@ -253,7 +252,6 @@ Begin WebPage WelcomeWebPage
       LockVertical    =   False
       Scope           =   2
       TabIndex        =   7
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   0
       URL             =   ""
@@ -266,6 +264,13 @@ End
 #tag EndWebPage
 
 #tag WindowCode
+	#tag Event
+		Sub Opening()
+		  stdout.WriteLine(CurrentMethodName)
+		End Sub
+	#tag EndEvent
+
+
 #tag EndWindowCode
 
 #tag Events SinglePlayerButton

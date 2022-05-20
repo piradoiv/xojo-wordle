@@ -69,7 +69,8 @@ Inherits WebSDKControl
 	#tag Event
 		Function SessionJavascriptURLs(session as WebSession) As String()
 		  If SharedClassFile = Nil Then
-		    SharedClassFile = WebFile.Open(SpecialFolder.Resources.Child("js").Child("WordleGameController.js"))
+		    Var file As FolderItem = SpecialFolder.Resources.Child("js").Child("WordleGameController.js")
+		    SharedClassFile = WebFile.Open(file)
 		    SharedClassFile.MIMEType = "text/javascript"
 		    SharedClassFile.Session = Nil
 		    SharedClassFile.Filename = "WordleGameController.js"
