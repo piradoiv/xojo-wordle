@@ -34,6 +34,9 @@ var Wordle;
             if (typeof json.can_continue !== 'undefined') {
                 this.mCanContinue = json.can_continue;
             }
+            if (typeof json.word !== 'undefined') {
+                this.mCurrentWord = json.word;
+            }
         }
         shakeLetter(controlId) {
             const duration = 60;
@@ -79,6 +82,9 @@ var Wordle;
                 }
                 this.mCurrentWord = this.mCurrentWord + event.key.toUpperCase();
                 this.updateLetters();
+                const json = new JSONItem();
+                json.set('word', this.mCurrentWord);
+                this.triggerServerEvent('wordUpdated', json, true);
             }
         }
         updateLetters() {

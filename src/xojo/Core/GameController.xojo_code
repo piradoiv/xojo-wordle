@@ -19,10 +19,17 @@ Inherits WebSDKControl
 		    Var word As String = parameters.Lookup("word", "")
 		    Var chars() As String = word.Split("")
 		    For i As Integer = 0 To 4
-		      AddOneLetter(If(chars.LastIndex >= i, chars(i), ""))
+		      AddOneLetter(If(chars.LastIndex >= i, chars(i), ""), False)
 		    Next
-		    
+		    UpdateControl
 		    Guess
+		  Case "wordUpdated"
+		    Column = 0
+		    Var word As String = parameters.Lookup("word", "")
+		    Var chars() As String = word.Split("")
+		    For i As Integer = 0 To 4
+		      AddOneLetter(If(chars.LastIndex >= i, chars(i), ""), False)
+		    Next
 		  End Select
 		End Function
 	#tag EndEvent
@@ -50,13 +57,16 @@ Inherits WebSDKControl
 		Sub Serialize(js as JSONItem)
 		  Var letters() As GridLetter = Grid.GetRowLetters(Row)
 		  Var letterIds() As String
+		  Var word As String
 		  For Each letter As GridLetter In letters
 		    letterIds.Add(If(letter <> Nil, letter.ControlID, ""))
+		    word = word + If(letter <> Nil, letter.Letter, "")
 		  Next
 		  
 		  js.Value("letters") = letterIds
 		  js.Value("row") = Row
 		  js.Value("can_continue") = CanContinue
+		  js.Value("word") = word
 		End Sub
 	#tag EndEvent
 
@@ -81,14 +91,18 @@ Inherits WebSDKControl
 
 
 	#tag Method, Flags = &h0
-		Sub AddOneLetter(caption As String)
-		  If Not CanContinue Then Return
+		Sub AddOneLetter(caption As String, shouldUpdateControl As Boolean = True)
+		  If Not CanContinue Or caption = "" Then Return
 		  
 		  Var letter As GridLetter = Grid.GetLetter(Row, Column)
 		  If letter = Nil Then Return
 		  letter.Letter = caption.Uppercase
 		  letter.State = GridLetter.States.Unknown
 		  Column = Min(5, Column + 1)
+		  
+		  If shouldUpdateControl Then
+		    UpdateControl
+		  End If
 		End Sub
 	#tag EndMethod
 
@@ -100,6 +114,7 @@ Inherits WebSDKControl
 		  Var letter As GridLetter = Grid.GetLetter(Row, Column)
 		  If letter = Nil Or letter.State <> GridLetter.States.Unknown Then Return
 		  letter.State = GridLetter.States.Empty
+		  UpdateControl
 		End Sub
 	#tag EndMethod
 

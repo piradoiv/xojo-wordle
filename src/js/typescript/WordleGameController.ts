@@ -37,6 +37,10 @@ namespace Wordle {
             if (typeof json.can_continue !== 'undefined') {
                 this.mCanContinue = json.can_continue;
             }
+
+            if (typeof json.word !== 'undefined') {
+                this.mCurrentWord = json.word;
+            }
         }
 
         public shakeLetter(controlId: string) {
@@ -88,6 +92,9 @@ namespace Wordle {
                 }
                 this.mCurrentWord = this.mCurrentWord + event.key.toUpperCase();
                 this.updateLetters();
+                const json = new JSONItem();
+                json.set('word', this.mCurrentWord);
+                this.triggerServerEvent('wordUpdated', json, true);
             }
         }
 

@@ -142,7 +142,6 @@ Begin WebPage SinglePlayerGameWebPage
       Position        =   0
       Scope           =   0
       TabIndex        =   6
-      TabStop         =   True
       Title           =   ""
       Tooltip         =   ""
       Top             =   -2
@@ -156,7 +155,7 @@ Begin WebPage SinglePlayerGameWebPage
       Height          =   200
       HTML            =   ""
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Left            =   400
       LockBottom      =   False
       LockedInPosition=   False
@@ -165,10 +164,8 @@ Begin WebPage SinglePlayerGameWebPage
       LockRight       =   True
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   7
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   0
       URL             =   ""
@@ -239,11 +236,15 @@ End
 	#tag Event
 		Sub GameOver()
 		  MessageBox("Game over, the word was: " + Me.WordToGuess + ".")
+		  Me.ResetGui
+		  Me.WordToGuess = WordleDictionary.GetRandomWord
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub WordDiscovered()
 		  MessageBox("Nice one! the word was: " + Me.WordToGuess + ".")
+		  Me.ResetGui
+		  Me.WordToGuess = WordleDictionary.GetRandomWord
 		End Sub
 	#tag EndEvent
 #tag EndEvents
