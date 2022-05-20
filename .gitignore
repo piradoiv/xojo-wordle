@@ -2,3 +2,4 @@
 *.debug
 *.idea
 *.xojo_uistate
+**/Builds*
