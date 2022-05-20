@@ -2,17 +2,26 @@
 Protected Class GameController
 Inherits WebSDKControl
 	#tag Event
+		Sub Closed()
+		  ResetGui
+		  CanContinue = False
+		  UpdateControl
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Function ExecuteEvent(name as string, parameters as JSONItem) As Boolean
 		  If Not Enabled Then Return False
 		  
 		  Select Case name
-		  Case "keyPressed"
-		    Var key As String = parameters.Lookup("key", "")
-		    If key = "" Then Return False
-		    AddOneLetter(key)
-		  Case "deletePressed"
-		    DeleteOneLetter
 		  Case "enterPressed"
+		    Column = 0
+		    Var word As String = parameters.Lookup("word", "")
+		    Var chars() As String = word.Split("")
+		    For i As Integer = 0 To 4
+		      AddOneLetter(If(chars.LastIndex >= i, chars(i), ""))
+		    Next
+		    
 		    Guess
 		  End Select
 		End Function
@@ -39,7 +48,15 @@ Inherits WebSDKControl
 
 	#tag Event
 		Sub Serialize(js as JSONItem)
+		  Var letters() As GridLetter = Grid.GetRowLetters(Row)
+		  Var letterIds() As String
+		  For Each letter As GridLetter In letters
+		    letterIds.Add(If(letter <> Nil, letter.ControlID, ""))
+		  Next
 		  
+		  js.Value("letters") = letterIds
+		  js.Value("row") = Row
+		  js.Value("can_continue") = CanContinue
 		End Sub
 	#tag EndEvent
 
@@ -173,6 +190,7 @@ Inherits WebSDKControl
 		  
 		  Guess(BestGuessScore, BestAttempt)
 		  Attempts.Add(attemptSquares)
+		  UpdateControl
 		  
 		  If word = WordToGuess Then
 		    CanContinue = False
@@ -242,6 +260,7 @@ Inherits WebSDKControl
 		    KeyStatuses.Value(keyEntry.Key) = "unknown"
 		  Next keyEntry
 		  RefreshKeyboard
+		  UpdateControl
 		  
 		  CanContinue = True
 		End Sub

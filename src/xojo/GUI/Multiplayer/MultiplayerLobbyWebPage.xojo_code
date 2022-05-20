@@ -178,7 +178,7 @@ Begin WebPage MultiplayerLobbyWebPage
       Height          =   200
       HTML            =   ""
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Left            =   414
       LockBottom      =   False
       LockedInPosition=   False
@@ -187,10 +187,8 @@ Begin WebPage MultiplayerLobbyWebPage
       LockRight       =   True
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   7
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   0
       URL             =   ""
