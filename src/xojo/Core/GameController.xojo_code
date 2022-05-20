@@ -15,21 +15,11 @@ Inherits WebSDKControl
 		  
 		  Select Case name
 		  Case "enterPressed"
-		    Column = 0
-		    Var word As String = parameters.Lookup("word", "")
-		    Var chars() As String = word.Split("")
-		    For i As Integer = 0 To 4
-		      AddOneLetter(If(chars.LastIndex >= i, chars(i), ""), False)
-		    Next
+		    UpdateInternalWord(parameters.Lookup("word", ""))
 		    UpdateControl
 		    Guess
 		  Case "wordUpdated"
-		    Column = 0
-		    Var word As String = parameters.Lookup("word", "")
-		    Var chars() As String = word.Split("")
-		    For i As Integer = 0 To 4
-		      AddOneLetter(If(chars.LastIndex >= i, chars(i), ""), False)
-		    Next
+		    UpdateInternalWord(parameters.Lookup("word", ""))
 		  End Select
 		End Function
 	#tag EndEvent
@@ -293,6 +283,16 @@ Inherits WebSDKControl
 		  script.Add("XojoWeb.getNamedControl('" + ControlID + "').showTooltip('" + letterControlId +"', '" + reason + "');")
 		  
 		  ExecuteJavaScript(String.FromArray(script))
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub UpdateInternalWord(word As String)
+		  Column = 0
+		  Var chars() As String = word.Split("")
+		  For i As Integer = 0 To 4
+		    AddOneLetter(If(chars.LastIndex >= i, chars(i), ""), False)
+		  Next
 		End Sub
 	#tag EndMethod
 
