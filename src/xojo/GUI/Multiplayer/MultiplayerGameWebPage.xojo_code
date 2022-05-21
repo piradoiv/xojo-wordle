@@ -222,34 +222,6 @@ Begin WebPage MultiplayerGameWebPage
       Top             =   0.0
       _mPanelIndex    =   -1
    End
-   Begin WebImageViewer MadeWithXojoLogo
-      ControlID       =   ""
-      Enabled         =   True
-      Height          =   80
-      HorizontalAlignment=   2
-      Index           =   -2147483648
-      Indicator       =   ""
-      Left            =   363
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockHorizontal  =   True
-      LockLeft        =   False
-      LockRight       =   False
-      LockTop         =   True
-      LockVertical    =   False
-      Picture         =   140148735
-      Scope           =   0
-      SVGData         =   ""
-      TabIndex        =   9
-      Tooltip         =   ""
-      Top             =   775
-      URL             =   ""
-      VerticalAlignment=   2
-      Visible         =   True
-      Width           =   300
-      _mPanelIndex    =   -1
-      _ProtectImage   =   False
-   End
    Begin ForkMeAtGitHubBanner ForkMe
       ControlID       =   ""
       Enabled         =   True
@@ -273,6 +245,34 @@ Begin WebPage MultiplayerGameWebPage
       UseSandbox      =   False
       Visible         =   True
       Width           =   200
+      _mPanelIndex    =   -1
+   End
+   Begin MadeWithXojoLink MadeWithXojo
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   80
+      Index           =   -2147483648
+      Indicator       =   0
+      LayoutDirection =   0
+      LayoutType      =   0
+      Left            =   363
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   True
+      LockLeft        =   False
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      ScrollDirection =   0
+      TabIndex        =   12
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   780
+      Visible         =   True
+      Width           =   300
+      _mDesignHeight  =   0
+      _mDesignWidth   =   0
       _mPanelIndex    =   -1
    End
 End
@@ -429,19 +429,6 @@ End
 	#tag Event
 		Sub Opening()
 		  Me.Period = System.Random.InRange(250, 450)
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events MadeWithXojoLogo
-	#tag Event
-		Sub Pressed(x as Integer, y as Integer)
-		  GoToURL("https://xojo.com/", True)
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Opening()
-		  Me.Style.Value("background-size") = "contain"
-		  Me.Style.Cursor = WebStyle.Cursors.Pointer
 		End Sub
 	#tag EndEvent
 #tag EndEvents

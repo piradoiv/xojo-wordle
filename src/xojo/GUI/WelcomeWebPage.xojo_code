@@ -183,36 +183,34 @@ Begin WebPage WelcomeWebPage
          Width           =   158
          _mPanelIndex    =   -1
       End
-      Begin WebImageViewer MadeWithXojoLogo
+      Begin MadeWithXojoLink MadeWithXojo
          ControlID       =   ""
          Enabled         =   True
          Height          =   80
-         HorizontalAlignment=   2
          Index           =   -2147483648
-         indicator       =   0
-         Left            =   151
-         LockBottom      =   False
+         Indicator       =   0
+         LayoutDirection =   0
+         LayoutType      =   0
+         Left            =   150
+         LockBottom      =   True
          LockedInPosition=   False
          LockHorizontal  =   False
          LockLeft        =   True
          LockRight       =   False
-         LockTop         =   True
+         LockTop         =   False
          LockVertical    =   False
-         PanelIndex      =   0
          Parent          =   "WelcomeRectangle"
-         Picture         =   140148735
          Scope           =   0
-         SVGData         =   ""
-         TabIndex        =   5
+         ScrollDirection =   0
+         TabIndex        =   8
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   400
-         URL             =   ""
-         VerticalAlignment=   2
+         Top             =   392
          Visible         =   True
          Width           =   300
+         _mDesignHeight  =   0
+         _mDesignWidth   =   0
          _mPanelIndex    =   -1
-         _ProtectImage   =   False
       End
    End
    Begin TutorialWebDialog Tutorial
@@ -324,19 +322,6 @@ End
 	#tag Event
 		Sub Pressed()
 		  Tutorial.Show
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events MadeWithXojoLogo
-	#tag Event
-		Sub Pressed(x as Integer, y as Integer)
-		  GoToURL("https://xojo.com/", True)
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Opening()
-		  Me.Style.Value("background-size") = "contain"
-		  Me.Style.Cursor = WebStyle.Cursors.Pointer
 		End Sub
 	#tag EndEvent
 #tag EndEvents

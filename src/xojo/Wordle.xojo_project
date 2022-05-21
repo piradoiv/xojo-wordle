@@ -14,6 +14,7 @@ Class=AppToolbar;GUI/AppToolbar.xojo_code;&h0000000045F997FF;&h0000000056B44FFF;
 WebView=WelcomeWebPage;GUI/WelcomeWebPage.xojo_code;&h000000001139FFFF;&h0000000056B44FFF;false
 WebView=TutorialWebDialog;GUI/TutorialWebDialog.xojo_code;&h000000003D65EFFF;&h0000000056B44FFF;false
 Class=ForkMeAtGitHubBanner;GUI/ForkMeAtGitHubBanner.xojo_code;&h0000000022DE2FFF;&h0000000056B44FFF;false
+WebContainer=MadeWithXojoLink;GUI/MadeWithXojoLink.xojo_code;&h0000000047ABC7FF;&h0000000056B44FFF;false
 WebContainer=GameGrid;GUI/GameGrid.xojo_code;&h000000001DD8DFFF;&h0000000056B44FFF;false
 WebContainer=GridLetter;GUI/GridLetter.xojo_code;&h000000003B5667FF;&h0000000056B44FFF;false
 WebContainer=GameKeyboard;GUI/GameKeyboard.xojo_code;&h000000006AE817FF;&h0000000056B44FFF;false
