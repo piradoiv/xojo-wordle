@@ -40,7 +40,7 @@ Begin WebContainer GameGridWithKeyboard
       LockVertical    =   False
       PanelCount      =   2
       Scope           =   2
-      SelectedPanelIndex=   1
+      SelectedPanelIndex=   0
       TabIndex        =   0
       TabStop         =   True
       Tooltip         =   ""
@@ -66,8 +66,8 @@ Begin WebContainer GameGridWithKeyboard
          LockHorizontal  =   False
          LockLeft        =   True
          LockRight       =   True
-         LockTop         =   False
-         LockVertical    =   True
+         LockTop         =   True
+         LockVertical    =   False
          Multiline       =   True
          PanelIndex      =   0
          Parent          =   "StatesPanel"
@@ -78,7 +78,7 @@ Begin WebContainer GameGridWithKeyboard
          TextAlignment   =   2
          TextColor       =   &c00000000
          Tooltip         =   ""
-         Top             =   229
+         Top             =   44
          Underline       =   False
          Visible         =   True
          Width           =   420
@@ -142,6 +142,68 @@ Begin WebContainer GameGridWithKeyboard
          Width           =   320
          _mDesignHeight  =   0
          _mDesignWidth   =   0
+         _mPanelIndex    =   -1
+      End
+      Begin WebLabel IntroductionLabel
+         Bold            =   False
+         ControlID       =   ""
+         Enabled         =   True
+         FontName        =   ""
+         FontSize        =   0.0
+         Height          =   179
+         Index           =   -2147483648
+         Indicator       =   ""
+         Italic          =   False
+         Left            =   89
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockHorizontal  =   True
+         LockLeft        =   False
+         LockRight       =   False
+         LockTop         =   True
+         LockVertical    =   False
+         Multiline       =   True
+         PanelIndex      =   0
+         Parent          =   "StatesPanel"
+         Scope           =   0
+         TabIndex        =   3
+         TabStop         =   True
+         Text            =   "We are waiting for more players.\n\nEveryone will start at the same time and will have to guess the same word.\n\nGood luck!"
+         TextAlignment   =   0
+         TextColor       =   &c00000000
+         Tooltip         =   ""
+         Top             =   187
+         Underline       =   False
+         Visible         =   True
+         Width           =   243
+         _mPanelIndex    =   -1
+      End
+      Begin WebProgressWheel WaitingForPlayersProgressWheel
+         Colorize        =   False
+         ControlID       =   ""
+         Enabled         =   True
+         Height          =   32
+         Index           =   -2147483648
+         Indicator       =   ""
+         Left            =   194
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockHorizontal  =   True
+         LockLeft        =   False
+         LockRight       =   False
+         LockTop         =   True
+         LockVertical    =   False
+         PanelIndex      =   0
+         Parent          =   "StatesPanel"
+         Scope           =   0
+         SVGColor        =   &c00000000
+         SVGData         =   ""
+         TabIndex        =   4
+         TabStop         =   True
+         Tooltip         =   ""
+         Top             =   402
+         Visible         =   True
+         Width           =   32
          _mPanelIndex    =   -1
       End
    End
