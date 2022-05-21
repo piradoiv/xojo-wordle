@@ -34,7 +34,7 @@ Begin WebPage WelcomeWebPage
       ControlID       =   ""
       Enabled         =   True
       HasBackgroundColor=   False
-      Height          =   362
+      Height          =   430
       Index           =   -2147483648
       Indicator       =   0
       LayoutDirection =   0
@@ -50,7 +50,7 @@ Begin WebPage WelcomeWebPage
       Scope           =   0
       TabIndex        =   0
       Tooltip         =   ""
-      Top             =   112
+      Top             =   78
       Visible         =   True
       Width           =   447
       _mDesignHeight  =   0
@@ -85,7 +85,7 @@ Begin WebPage WelcomeWebPage
          TextAlignment   =   2
          TextColor       =   &c00000000
          Tooltip         =   ""
-         Top             =   156
+         Top             =   122
          Underline       =   False
          Visible         =   True
          Width           =   214
@@ -116,7 +116,7 @@ Begin WebPage WelcomeWebPage
          TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   246
+         Top             =   212
          Visible         =   True
          Width           =   158
          _mPanelIndex    =   -1
@@ -147,7 +147,7 @@ Begin WebPage WelcomeWebPage
          TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   300
+         Top             =   266
          Visible         =   True
          Width           =   158
          _mPanelIndex    =   -1
@@ -178,10 +178,41 @@ Begin WebPage WelcomeWebPage
          TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   354
+         Top             =   320
          Visible         =   True
          Width           =   158
          _mPanelIndex    =   -1
+      End
+      Begin WebImageViewer MadeWithXojoLogo
+         ControlID       =   ""
+         Enabled         =   True
+         Height          =   80
+         HorizontalAlignment=   2
+         Index           =   -2147483648
+         indicator       =   0
+         Left            =   151
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockHorizontal  =   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         LockVertical    =   False
+         PanelIndex      =   0
+         Parent          =   "WelcomeRectangle"
+         Picture         =   140148735
+         Scope           =   0
+         SVGData         =   ""
+         TabIndex        =   5
+         TabStop         =   True
+         Tooltip         =   ""
+         Top             =   400
+         URL             =   ""
+         VerticalAlignment=   2
+         Visible         =   True
+         Width           =   300
+         _mPanelIndex    =   -1
+         _ProtectImage   =   False
       End
    End
    Begin TutorialWebDialog Tutorial
@@ -293,6 +324,19 @@ End
 	#tag Event
 		Sub Pressed()
 		  Tutorial.Show
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events MadeWithXojoLogo
+	#tag Event
+		Sub Pressed(x as Integer, y as Integer)
+		  GoToURL("https://xojo.com/", True)
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Opening()
+		  Me.Style.Value("background-size") = "contain"
+		  Me.Style.Cursor = WebStyle.Cursors.Pointer
 		End Sub
 	#tag EndEvent
 #tag EndEvents

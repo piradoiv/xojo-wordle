@@ -18,7 +18,7 @@ Inherits WebApplication
 	#tag Event
 		Sub Opening(args() as String)
 		  #If Not DebugBuild
-		    Call Daemonize
+		    'Call Daemonize
 		  #Endif
 		  
 		  GlobalGame = New MultiplayerGame

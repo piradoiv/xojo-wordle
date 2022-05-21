@@ -57,6 +57,7 @@ Inherits WebSDKControl
 		  js.Value("row") = Row
 		  js.Value("can_continue") = CanContinue
 		  js.Value("word") = word
+		  js.Value("enabled") = Enabled
 		End Sub
 	#tag EndEvent
 

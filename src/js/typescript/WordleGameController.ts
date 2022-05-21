@@ -6,6 +6,7 @@ namespace Wordle {
         private mRow = 0;
         private mLetterControls: HTMLElement[] = [];
         private mCanContinue = false;
+        private mEnabled = false;
         private validKeys: String[] = ['a', 'b', 'c', 'd', 'e','f', 'g', 'h',
             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
             't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -41,6 +42,10 @@ namespace Wordle {
             if (typeof json.word !== 'undefined') {
                 this.mCurrentWord = json.word;
             }
+
+            if (typeof json.enabled !== 'undefined') {
+                this.mEnabled = json.enabled;
+            }
         }
 
         public shakeLetter(controlId: string) {
@@ -66,7 +71,7 @@ namespace Wordle {
         }
 
         private handleKeyboardEvent(event: KeyboardEvent) {
-            if (!this.mCanContinue) {
+            if (!this.mCanContinue || !this.mEnabled) {
                 return;
             }
 

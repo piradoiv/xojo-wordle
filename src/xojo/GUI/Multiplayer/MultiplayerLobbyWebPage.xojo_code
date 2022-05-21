@@ -21,7 +21,7 @@ Begin WebPage MultiplayerLobbyWebPage
    MinimumHeight   =   400
    MinimumWidth    =   600
    TabIndex        =   0
-   Title           =   "Untitled"
+   Title           =   "Choose a Name"
    Top             =   0
    Visible         =   True
    Width           =   614

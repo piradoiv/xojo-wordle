@@ -56,36 +56,6 @@ Begin WebPage MultiplayerGameWebPage
       _mDesignHeight  =   0
       _mDesignWidth   =   0
       _mPanelIndex    =   -1
-      Begin GameGrid Grid
-         ControlID       =   ""
-         Enabled         =   True
-         Height          =   456
-         Index           =   "-2147483648"
-         Indicator       =   0
-         LayoutDirection =   0
-         LayoutType      =   0
-         Left            =   83
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockHorizontal  =   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         LockVertical    =   False
-         Parent          =   "Rectangle1"
-         Scope           =   2
-         ScrollDirection =   0
-         TabIndex        =   1
-         TabPanelIndex   =   0
-         TabStop         =   True
-         Tooltip         =   ""
-         Top             =   138
-         Visible         =   True
-         Width           =   380
-         _mDesignHeight  =   0
-         _mDesignWidth   =   0
-         _mPanelIndex    =   -1
-      End
       Begin WebListBox PlayerListBox
          ColumnCount     =   4
          ColumnWidths    =   "0%,0%,0%,0%"
@@ -124,16 +94,16 @@ Begin WebPage MultiplayerGameWebPage
          Width           =   460
          _mPanelIndex    =   -1
       End
-      Begin GameKeyboard Keyboard
+      Begin GameGridWithKeyboard GridWithKeyboard
          ControlID       =   ""
          Enabled         =   True
-         Height          =   120
-         Index           =   "-2147483648"
+         Height          =   641
+         Index           =   -2147483648
          Indicator       =   0
          LayoutDirection =   0
          LayoutType      =   0
-         Left            =   83
-         LockBottom      =   False
+         Left            =   63
+         LockBottom      =   True
          LockedInPosition=   False
          LockHorizontal  =   False
          LockLeft        =   True
@@ -141,15 +111,15 @@ Begin WebPage MultiplayerGameWebPage
          LockTop         =   True
          LockVertical    =   False
          Parent          =   "Rectangle1"
-         Scope           =   2
+         Scope           =   0
          ScrollDirection =   0
-         TabIndex        =   4
-         TabPanelIndex   =   0
+         State           =   ""
+         TabIndex        =   11
          TabStop         =   True
          Tooltip         =   ""
-         Top             =   610
+         Top             =   118
          Visible         =   True
-         Width           =   380
+         Width           =   420
          _mDesignHeight  =   0
          _mDesignWidth   =   0
          _mPanelIndex    =   -1
@@ -310,13 +280,35 @@ End
 
 #tag WindowCode
 	#tag Event
+		Sub Closed()
+		  SecondsTimer.RunMode = WebTimer.RunModes.Off
+		  RefreshPlayerListTimer.RunMode = WebTimer.RunModes.Off
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Opening()
-		  Controller.Keyboard = Keyboard
-		  Controller.Grid = Grid
+		  Controller.Grid = GridWithKeyboard.Grid
+		  Controller.Keyboard = GridWithKeyboard.Keyboard
 		  Controller.WordToGuess = WordleDictionary.GetRandomWord
 		End Sub
 	#tag EndEvent
 
+
+	#tag Method, Flags = &h0
+		Sub KeyboardPressedHandler(caption As String)
+		  If App.GlobalGame.State <> MultiplayerGame.States.InProgress Then Return
+		  
+		  Select Case caption
+		  Case GameKeyboardKey.kEnterCaption
+		    Controller.Guess
+		  Case GameKeyboardKey.kDeleteCaption
+		    Controller.DeleteOneLetter
+		  Else
+		    Controller.AddOneLetter(caption)
+		  End Select
+		End Sub
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Sub RefreshPlayerList()
@@ -366,19 +358,10 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events Keyboard
+#tag Events GridWithKeyboard
 	#tag Event
-		Sub Pressed(caption As String)
-		  If App.GlobalGame.State <> MultiplayerGame.States.InProgress Then Return
-		  
-		  Select Case caption
-		  Case GameKeyboardKey.kEnterCaption
-		    Controller.Guess
-		  Case GameKeyboardKey.kDeleteCaption
-		    Controller.DeleteOneLetter
-		  Else
-		    Controller.AddOneLetter(caption)
-		  End Select
+		Sub KeyboardPressed(caption As String)
+		  KeyboardPressedHandler(caption)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -433,9 +416,11 @@ End
 		    Controller.WordToGuess = App.GlobalGame.WordToGuess
 		  End If
 		  
-		  If Grid.Enabled <> shouldEnable Then
-		    Grid.Enabled = shouldEnable
+		  If GridWithKeyboard.Enabled <> shouldEnable Then
+		    GridWithKeyboard.Enabled = shouldEnable
 		  End If
+		  
+		  GridWithKeyboard.State = If(shouldEnable, GameGridWithKeyboard.States.Playing, GameGridWithKeyboard.States.Waiting)
 		  
 		  If RemainingTimeLabel.Text = App.GlobalGame.RemainingTimeLabelText Then Return
 		  RemainingTimeLabel.Text = App.GlobalGame.RemainingTimeLabelText

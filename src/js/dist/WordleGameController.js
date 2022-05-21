@@ -9,6 +9,7 @@ var Wordle;
             this.mRow = 0;
             this.mLetterControls = [];
             this.mCanContinue = false;
+            this.mEnabled = false;
             this.validKeys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
                 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -37,6 +38,9 @@ var Wordle;
             if (typeof json.word !== 'undefined') {
                 this.mCurrentWord = json.word;
             }
+            if (typeof json.enabled !== 'undefined') {
+                this.mEnabled = json.enabled;
+            }
         }
         shakeLetter(controlId) {
             const duration = 60;
@@ -59,7 +63,7 @@ var Wordle;
             setTimeout(() => control.tooltip('hide'), duration);
         }
         handleKeyboardEvent(event) {
-            if (!this.mCanContinue) {
+            if (!this.mCanContinue || !this.mEnabled) {
                 return;
             }
             if (event.code.toLowerCase() === 'enter') {
