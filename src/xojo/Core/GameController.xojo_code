@@ -3,7 +3,10 @@ Protected Class GameController
 Inherits WebSDKControl
 	#tag Event
 		Sub Closed()
-		  ResetGui
+		  If Grid <> Nil Then
+		    ResetGui
+		  End If
+		  
 		  CanContinue = False
 		  UpdateControl
 		End Sub
