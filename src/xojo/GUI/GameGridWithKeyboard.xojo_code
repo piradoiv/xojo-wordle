@@ -1,6 +1,7 @@
 #tag WebContainerControl
 Begin WebContainer GameGridWithKeyboard
    Compatibility   =   ""
+   ControlCount    =   0
    ControlID       =   ""
    Enabled         =   True
    Height          =   620
@@ -23,6 +24,7 @@ Begin WebContainer GameGridWithKeyboard
    _mDesignWidth   =   0
    _mPanelIndex    =   -1
    Begin WebPagePanel StatesPanel
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   620
@@ -42,7 +44,6 @@ Begin WebContainer GameGridWithKeyboard
       Scope           =   2
       SelectedPanelIndex=   0
       TabIndex        =   0
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   0
       Visible         =   True
@@ -69,15 +70,15 @@ Begin WebContainer GameGridWithKeyboard
          LockTop         =   True
          LockVertical    =   False
          Multiline       =   True
-         PanelIndex      =   0
+         PanelIndex      =   "0"
          Parent          =   "StatesPanel"
          Scope           =   2
          TabIndex        =   0
+         TabPanelIndex   =   0
          TabStop         =   True
          Text            =   "The next game will begin soon."
          TextAlignment   =   2
-         TextColor       =   &c00000000
-         Tooltip         =   ""
+         TextColor       =   &c000000FF
          Top             =   44
          Underline       =   False
          Visible         =   True
@@ -85,6 +86,7 @@ Begin WebContainer GameGridWithKeyboard
          _mPanelIndex    =   -1
       End
       Begin GameGrid Grid
+         ControlCount    =   0
          ControlID       =   ""
          Enabled         =   True
          Height          =   456
@@ -100,13 +102,13 @@ Begin WebContainer GameGridWithKeyboard
          LockRight       =   True
          LockTop         =   True
          LockVertical    =   False
-         PanelIndex      =   1
+         PanelIndex      =   "1"
          Parent          =   "StatesPanel"
          Scope           =   0
          ScrollDirection =   0
          TabIndex        =   1
+         TabPanelIndex   =   0
          TabStop         =   True
-         Tooltip         =   ""
          Top             =   20
          Visible         =   True
          Width           =   380
@@ -115,6 +117,7 @@ Begin WebContainer GameGridWithKeyboard
          _mPanelIndex    =   -1
       End
       Begin GameKeyboard Keyboard
+         ControlCount    =   0
          ControlID       =   ""
          Enabled         =   True
          Height          =   120
@@ -130,13 +133,13 @@ Begin WebContainer GameGridWithKeyboard
          LockRight       =   False
          LockTop         =   False
          LockVertical    =   False
-         PanelIndex      =   1
+         PanelIndex      =   "1"
          Parent          =   "StatesPanel"
          Scope           =   0
          ScrollDirection =   0
          TabIndex        =   2
+         TabPanelIndex   =   0
          TabStop         =   True
-         Tooltip         =   ""
          Top             =   484
          Visible         =   True
          Width           =   320
@@ -163,15 +166,15 @@ Begin WebContainer GameGridWithKeyboard
          LockTop         =   True
          LockVertical    =   False
          Multiline       =   True
-         PanelIndex      =   0
+         PanelIndex      =   "0"
          Parent          =   "StatesPanel"
          Scope           =   0
          TabIndex        =   3
+         TabPanelIndex   =   0
          TabStop         =   True
          Text            =   "We are waiting for more players.\n\nEveryone will start at the same time and will have to guess the same word.\n\nGood luck!"
          TextAlignment   =   0
-         TextColor       =   &c00000000
-         Tooltip         =   ""
+         TextColor       =   &c000000FF
          Top             =   187
          Underline       =   False
          Visible         =   True
@@ -193,14 +196,14 @@ Begin WebContainer GameGridWithKeyboard
          LockRight       =   False
          LockTop         =   True
          LockVertical    =   False
-         PanelIndex      =   0
+         PanelIndex      =   "0"
          Parent          =   "StatesPanel"
          Scope           =   0
          SVGColor        =   &c00000000
          SVGData         =   ""
          TabIndex        =   4
+         TabPanelIndex   =   0
          TabStop         =   True
-         Tooltip         =   ""
          Top             =   402
          Visible         =   True
          Width           =   32
@@ -253,6 +256,14 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="_mPanelIndex"
 		Visible=false

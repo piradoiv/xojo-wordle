@@ -2,6 +2,7 @@
 Begin WebPage WelcomeWebPage
    AllowTabOrderWrap=   True
    Compatibility   =   ""
+   ControlCount    =   0
    ControlID       =   ""
    Enabled         =   False
    Height          =   586
@@ -31,6 +32,7 @@ Begin WebPage WelcomeWebPage
    _mPanelIndex    =   -1
    Begin WebRectangle WelcomeRectangle
       BackgroundColor =   &cFFFFFF00
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       HasBackgroundColor=   False
@@ -83,7 +85,7 @@ Begin WebPage WelcomeWebPage
          TabStop         =   True
          Text            =   "Wordle"
          TextAlignment   =   2
-         TextColor       =   &c00000000
+         TextColor       =   &c000000FF
          Tooltip         =   ""
          Top             =   122
          Underline       =   False
@@ -184,6 +186,7 @@ Begin WebPage WelcomeWebPage
          _mPanelIndex    =   -1
       End
       Begin MadeWithXojoLink MadeWithXojo
+         ControlCount    =   0
          ControlID       =   ""
          Enabled         =   True
          Height          =   80
@@ -203,8 +206,8 @@ Begin WebPage WelcomeWebPage
          Scope           =   0
          ScrollDirection =   0
          TabIndex        =   8
+         TabPanelIndex   =   0
          TabStop         =   True
-         Tooltip         =   ""
          Top             =   392
          Visible         =   True
          Width           =   300
@@ -214,6 +217,7 @@ Begin WebPage WelcomeWebPage
       End
    End
    Begin TutorialWebDialog Tutorial
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   672
@@ -268,7 +272,6 @@ Begin WebPage WelcomeWebPage
       ControlID       =   ""
       Enabled         =   True
       Height          =   200
-      HTML            =   ""
       Index           =   -2147483648
       Indicator       =   ""
       Left            =   400
@@ -283,7 +286,6 @@ Begin WebPage WelcomeWebPage
       TabIndex        =   7
       Tooltip         =   ""
       Top             =   0
-      URL             =   ""
       UseSandbox      =   False
       Visible         =   True
       Width           =   200
@@ -326,6 +328,14 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="_mPanelIndex"
 		Visible=false

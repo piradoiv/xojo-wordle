@@ -1,6 +1,7 @@
 #tag WebPage
 Begin WebDialog TutorialWebDialog
    Compatibility   =   ""
+   ControlCount    =   0
    ControlID       =   ""
    Enabled         =   True
    Height          =   672
@@ -45,7 +46,7 @@ Begin WebDialog TutorialWebDialog
       TabIndex        =   0
       Text            =   "Guess the WORDLE in six tries.\n\nEach guess must be a valid five-letter word. Hit the enter button to submit.\n\nAfter each guess, the color of the tiles will change to show how close your guess was to the word."
       TextAlignment   =   0
-      TextColor       =   &c00000000
+      TextColor       =   &c000000FF
       Tooltip         =   ""
       Top             =   20
       Underline       =   False
@@ -76,7 +77,7 @@ Begin WebDialog TutorialWebDialog
       TabIndex        =   1
       Text            =   "Examples"
       TextAlignment   =   0
-      TextColor       =   &c00000000
+      TextColor       =   &c000000FF
       Tooltip         =   ""
       Top             =   189
       Underline       =   False
@@ -85,6 +86,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter1
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -114,6 +116,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter2
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -143,6 +146,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter3
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -172,6 +176,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter4
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -201,6 +206,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter5
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -252,7 +258,7 @@ Begin WebDialog TutorialWebDialog
       TabIndex        =   7
       Text            =   "The letter W is in the word and in the correct spot."
       TextAlignment   =   0
-      TextColor       =   &c00000000
+      TextColor       =   &c000000FF
       Tooltip         =   ""
       Top             =   295
       Underline       =   False
@@ -261,6 +267,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter6
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -290,6 +297,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter7
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -319,6 +327,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter8
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -348,6 +357,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter9
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -377,6 +387,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter10
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -428,7 +439,7 @@ Begin WebDialog TutorialWebDialog
       TabIndex        =   13
       Text            =   "The letter I is in the word but in the wrong spot."
       TextAlignment   =   0
-      TextColor       =   &c00000000
+      TextColor       =   &c000000FF
       Tooltip         =   ""
       Top             =   415
       Underline       =   False
@@ -437,6 +448,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter11
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -466,6 +478,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter12
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -495,6 +508,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter13
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -524,6 +538,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter14
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -553,6 +568,7 @@ Begin WebDialog TutorialWebDialog
       _mPanelIndex    =   -1
    End
    Begin GridLetter GridLetter15
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   52
@@ -604,7 +620,7 @@ Begin WebDialog TutorialWebDialog
       TabIndex        =   19
       Text            =   "The letter U is not in the word in any spot."
       TextAlignment   =   0
-      TextColor       =   &c00000000
+      TextColor       =   &c000000FF
       Tooltip         =   ""
       Top             =   535
       Underline       =   False
@@ -659,6 +675,14 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="_mPanelIndex"
 		Visible=false

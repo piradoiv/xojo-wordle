@@ -154,7 +154,7 @@ Begin WebPage MultiplayerGameWebPage
       TabIndex        =   3
       Text            =   "Remaining Time: --:--"
       TextAlignment   =   2
-      TextColor       =   &c00000000
+      TextColor       =   &c000000FF
       Tooltip         =   ""
       Top             =   72
       Underline       =   False
