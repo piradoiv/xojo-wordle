@@ -1,6 +1,7 @@
 #tag WebContainerControl
 Begin WebContainer GameKeyboard
    Compatibility   =   ""
+   ControlCount    =   0
    ControlID       =   ""
    Enabled         =   True
    Height          =   120
@@ -21,7 +22,6 @@ Begin WebContainer GameKeyboard
    Width           =   320
    _mDesignHeight  =   0
    _mDesignWidth   =   0
-   _mName          =   ""
    _mPanelIndex    =   -1
 End
 #tag EndWebContainerControl
@@ -81,6 +81,14 @@ End
 #tag EndWindowCode
 
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="_mPanelIndex"
 		Visible=false

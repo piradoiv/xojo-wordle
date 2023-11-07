@@ -1,6 +1,7 @@
 #tag Class
 Protected Class GameController
 Inherits WebSDKControl
+	#tag CompatibilityFlags = (TargetWeb and (Target32Bit or Target64Bit))
 	#tag Event
 		Sub Closed()
 		  If Grid <> Nil Then

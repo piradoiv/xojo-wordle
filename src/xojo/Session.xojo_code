@@ -6,9 +6,11 @@ Inherits WebSession
   disconnectmessage=You have been disconnected from this application.
   confirmmessage=
   AllowTabOrderWrap=True
+  ColorMode=0
+  SendEventsInBatches=True
 #tag EndSession
 	#tag Event
-		Sub Closing(appQuitting as Boolean)
+		Sub Closing(appQuitting As Boolean)
 		  stdout.WriteLine(CurrentMethodName)
 		  App.GlobalGame.RemovePlayer(Identifier)
 		End Sub
@@ -36,6 +38,35 @@ Inherits WebSession
 
 
 	#tag ViewBehavior
+		#tag ViewProperty
+			Name="ColorMode"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="WebSession.ColorModes"
+			EditorType="Enum"
+			#tag EnumValues
+				"0 - Auto"
+				"1 - Light"
+				"2 - Dark"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="UserPrefersDarkMode"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="SendEventsInBatches"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true

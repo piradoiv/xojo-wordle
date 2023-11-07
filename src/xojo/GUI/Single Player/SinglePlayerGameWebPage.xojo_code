@@ -2,6 +2,7 @@
 Begin WebPage SinglePlayerGameWebPage
    AllowTabOrderWrap=   True
    Compatibility   =   ""
+   ControlCount    =   0
    ControlID       =   ""
    Enabled         =   False
    Height          =   650
@@ -30,6 +31,7 @@ Begin WebPage SinglePlayerGameWebPage
    _mDesignWidth   =   0
    _mPanelIndex    =   -1
    Begin GameGrid Grid
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   384
@@ -57,6 +59,7 @@ Begin WebPage SinglePlayerGameWebPage
       _mPanelIndex    =   -1
    End
    Begin GameKeyboard Keyboard
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   183
@@ -84,6 +87,7 @@ Begin WebPage SinglePlayerGameWebPage
       _mPanelIndex    =   -1
    End
    Begin TutorialWebDialog TutorialModal
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   654
@@ -116,10 +120,8 @@ Begin WebPage SinglePlayerGameWebPage
       Enabled         =   True
       GreenKeys       =   0
       Index           =   -2147483648
-      Left            =   0.0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   0.0
       WordToGuess     =   ""
       YellowKeys      =   0
       _mPanelIndex    =   -1
@@ -153,7 +155,6 @@ Begin WebPage SinglePlayerGameWebPage
       ControlID       =   ""
       Enabled         =   True
       Height          =   200
-      HTML            =   ""
       Index           =   -2147483648
       Indicator       =   0
       Left            =   400
@@ -168,10 +169,39 @@ Begin WebPage SinglePlayerGameWebPage
       TabIndex        =   7
       Tooltip         =   ""
       Top             =   0
-      URL             =   ""
       UseSandbox      =   False
       Visible         =   True
       Width           =   200
+      _mPanelIndex    =   -1
+   End
+   Begin SinglePlayerEndMessageDialog EndMessageDialog
+      ControlID       =   ""
+      Enabled         =   True
+      Explanation     =   ""
+      Index           =   -2147483648
+      Indicator       =   ""
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Message         =   ""
+      Scope           =   2
+      Title           =   ""
+      Tooltip         =   ""
+      _mPanelIndex    =   -1
+   End
+   Begin WebTimer ResetControllerTimer
+      ControlID       =   ""
+      Enabled         =   True
+      Index           =   -2147483648
+      Location        =   1
+      LockedInPosition=   False
+      Period          =   100
+      RunMode         =   0
+      Scope           =   2
       _mPanelIndex    =   -1
    End
 End
@@ -200,6 +230,15 @@ End
 	#tag EndEvent
 
 
+	#tag Method, Flags = &h21
+		Private Sub ShowFinalMessage(message As String)
+		  Controller.Enabled = False
+		  EndMessageDialog.Message = message
+		  EndMessageDialog.Show
+		End Sub
+	#tag EndMethod
+
+
 	#tag Property, Flags = &h21
 		Private Column As Integer
 	#tag EndProperty
@@ -211,20 +250,6 @@ End
 
 #tag EndWindowCode
 
-#tag Events Keyboard
-	#tag Event
-		Sub Pressed(caption As String)
-		  Select Case caption
-		  Case GameKeyboardKey.kEnterCaption
-		    Controller.Guess
-		  Case GameKeyboardKey.kDeleteCaption
-		    Controller.DeleteOneLetter
-		  Else
-		    Controller.AddOneLetter(caption)
-		  End Select
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events TutorialModal
 	#tag Event
 		Sub Dismissed()
@@ -235,20 +260,40 @@ End
 #tag Events Controller
 	#tag Event
 		Sub GameOver()
-		  MessageBox("Game over, the word was: " + Me.WordToGuess + ".")
-		  Me.ResetGui
-		  Me.WordToGuess = WordleDictionary.GetRandomWord
+		  ShowFinalMessage("Game over, the word was: " + Me.WordToGuess + ".")
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub WordDiscovered()
-		  MessageBox("Nice one! the word was: " + Me.WordToGuess + ".")
-		  Me.ResetGui
-		  Me.WordToGuess = WordleDictionary.GetRandomWord
+		  ShowFinalMessage("Nice one! the word was: " + Me.WordToGuess + ".")
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events EndMessageDialog
+	#tag Event
+		Sub ButtonPressed(button As WebMessageDialogButton)
+		  ResetControllerTimer.RunMode = WebTimer.RunModes.Single
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events ResetControllerTimer
+	#tag Event
+		Sub Run()
+		  Controller.ResetGui
+		  Controller.WordToGuess = WordleDictionary.GetRandomWord
+		  Controller.Enabled = True
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="_mPanelIndex"
 		Visible=false

@@ -2,6 +2,7 @@
 Begin WebPage MultiplayerGameWebPage
    AllowTabOrderWrap=   True
    Compatibility   =   ""
+   ControlCount    =   0
    ControlID       =   ""
    Enabled         =   False
    Height          =   880
@@ -31,6 +32,7 @@ Begin WebPage MultiplayerGameWebPage
    _mPanelIndex    =   -1
    Begin WebRectangle Rectangle1
       BackgroundColor =   &cFFFFFF00
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       HasBackgroundColor=   False
@@ -68,6 +70,8 @@ Begin WebPage MultiplayerGameWebPage
          Indicator       =   ""
          InitialValue    =   "Score	Name	Best Attempt	Won"
          LastAddedRowIndex=   0
+         LastColumnIndex =   0
+         LastRowIndex    =   0
          Left            =   483
          LockBottom      =   False
          LockedInPosition=   False
@@ -95,10 +99,11 @@ Begin WebPage MultiplayerGameWebPage
          _mPanelIndex    =   -1
       End
       Begin GameGridWithKeyboard GridWithKeyboard
+         ControlCount    =   0
          ControlID       =   ""
          Enabled         =   True
          Height          =   641
-         Index           =   -2147483648
+         Index           =   "-2147483648"
          Indicator       =   0
          LayoutDirection =   0
          LayoutType      =   0
@@ -115,6 +120,7 @@ Begin WebPage MultiplayerGameWebPage
          ScrollDirection =   0
          State           =   ""
          TabIndex        =   11
+         TabPanelIndex   =   0
          TabStop         =   True
          Tooltip         =   ""
          Top             =   118
@@ -163,10 +169,8 @@ Begin WebPage MultiplayerGameWebPage
       Enabled         =   False
       GreenKeys       =   0
       Index           =   -2147483648
-      Left            =   0.0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   0.0
       WordToGuess     =   ""
       YellowKeys      =   0
       _mPanelIndex    =   -1
@@ -200,33 +204,28 @@ Begin WebPage MultiplayerGameWebPage
       ControlID       =   ""
       Enabled         =   True
       Index           =   -2147483648
-      Left            =   0.0
       Location        =   1
       LockedInPosition=   False
       Period          =   2500
       RunMode         =   2
       Scope           =   0
-      Top             =   0.0
       _mPanelIndex    =   -1
    End
    Begin WebTimer SecondsTimer
       ControlID       =   ""
       Enabled         =   True
       Index           =   -2147483648
-      Left            =   0.0
       Location        =   1
       LockedInPosition=   False
       Period          =   500
       RunMode         =   2
       Scope           =   2
-      Top             =   0.0
       _mPanelIndex    =   -1
    End
    Begin ForkMeAtGitHubBanner ForkMe
       ControlID       =   ""
       Enabled         =   True
       Height          =   200
-      HTML            =   ""
       Index           =   -2147483648
       Indicator       =   0
       Left            =   826
@@ -241,13 +240,13 @@ Begin WebPage MultiplayerGameWebPage
       TabIndex        =   10
       Tooltip         =   ""
       Top             =   0
-      URL             =   ""
       UseSandbox      =   False
       Visible         =   True
       Width           =   200
       _mPanelIndex    =   -1
    End
    Begin MadeWithXojoLink MadeWithXojo
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       Height          =   80
@@ -266,7 +265,6 @@ Begin WebPage MultiplayerGameWebPage
       Scope           =   2
       ScrollDirection =   0
       TabIndex        =   12
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   780
       Visible         =   True
@@ -433,6 +431,14 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="_mPanelIndex"
 		Visible=false

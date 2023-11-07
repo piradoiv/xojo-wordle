@@ -1,5 +1,5 @@
 Type=Web2
-RBProjectVersion=2023.02
+RBProjectVersion=2023.04
 MinIDEVersion=20200200
 OrigIDEVersion=20220100
 Class=App;App.xojo_code;&h00000000251497FF;&h0000000000000000;false
@@ -36,6 +36,7 @@ Class=WordleDictionary;Core/WordleDictionary.xojo_code;&h0000000060B057FF;&h0000
 Module=Extensions;Core/Extensions.xojo_code;&h000000006598F7FF;&h000000004D818FFF;false
 Folder=Assets;GUI/Assets;&h0000000026ED6FFF;&h0000000056B44FFF;false
 MultiImage=mwx_long;GUI/Assets/mwx_long.xojo_image;&h00000000085A7FFF;&h0000000026ED6FFF;false
+Class=SinglePlayerEndMessageDialog;GUI/Single Player/SinglePlayerEndMessageDialog.xojo_code;&h000000007C0A3FFF;&h000000006EE777FF;false
 DefaultWindow=WelcomeWebPage
 MajorVersion=1
 MinorVersion=0
