@@ -250,6 +250,23 @@ End
 
 #tag EndWindowCode
 
+#tag Events Keyboard
+	#tag Event
+		Sub Pressed(caption As String)
+		  Controller.AddOneLetter(caption)
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub DeletePressed()
+		  Controller.DeleteOneLetter
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub EnterPressed()
+		  Controller.Guess
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events TutorialModal
 	#tag Event
 		Sub Dismissed()

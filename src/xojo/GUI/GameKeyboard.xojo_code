@@ -63,10 +63,25 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub KeyPressedHandler(sender As GameKeyboardKey, caption As String)
-		  Pressed(caption)
+		  Select Case caption
+		  Case GameKeyboardKey.kEnterCaption
+		    RaiseEvent EnterPressed
+		  Case GameKeyboardKey.kDeleteCaption
+		    RaiseEvent DeletePressed
+		  Else
+		    RaiseEvent Pressed(caption)
+		  End Select
 		End Sub
 	#tag EndMethod
 
+
+	#tag Hook, Flags = &h0
+		Event DeletePressed()
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event EnterPressed()
+	#tag EndHook
 
 	#tag Hook, Flags = &h0
 		Event Pressed(caption As String)

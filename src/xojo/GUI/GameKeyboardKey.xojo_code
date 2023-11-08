@@ -1,6 +1,7 @@
 #tag WebContainerControl
 Begin WebContainer GameKeyboardKey
    Compatibility   =   ""
+   ControlCount    =   0
    ControlID       =   ""
    Enabled         =   True
    Height          =   58
@@ -21,10 +22,10 @@ Begin WebContainer GameKeyboardKey
    Width           =   43
    _mDesignHeight  =   0
    _mDesignWidth   =   0
-   _mName          =   ""
    _mPanelIndex    =   -1
    Begin WebRectangle BackgroundRectangle
       BackgroundColor =   &cFFFFFF00
+      ControlCount    =   0
       ControlID       =   ""
       Enabled         =   True
       HasBackgroundColor=   True
@@ -80,29 +81,6 @@ Begin WebContainer GameKeyboardKey
       Underline       =   False
       Visible         =   True
       Width           =   41
-      _mPanelIndex    =   -1
-   End
-   Begin WebCanvas OverlayCanvas
-      ControlID       =   ""
-      DiffEngineDisabled=   False
-      Enabled         =   True
-      Height          =   58
-      Index           =   -2147483648
-      Indicator       =   0
-      Left            =   0
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockHorizontal  =   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   True
-      LockVertical    =   False
-      Scope           =   2
-      TabIndex        =   2
-      Tooltip         =   ""
-      Top             =   0
-      Visible         =   True
-      Width           =   43
       _mPanelIndex    =   -1
    End
 End
@@ -189,14 +167,22 @@ End
 
 #tag EndWindowCode
 
-#tag Events OverlayCanvas
+#tag Events CaptionLabel
 	#tag Event
-		Sub Pressed(x as Integer, y as Integer)
-		  Pressed(Caption)
+		Sub Pressed()
+		  RaiseEvent Pressed(Caption)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="ControlCount"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="_mPanelIndex"
 		Visible=false

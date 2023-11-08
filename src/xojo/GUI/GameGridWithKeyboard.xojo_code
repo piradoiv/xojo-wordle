@@ -42,7 +42,7 @@ Begin WebContainer GameGridWithKeyboard
       LockVertical    =   False
       PanelCount      =   2
       Scope           =   2
-      SelectedPanelIndex=   0
+      SelectedPanelIndex=   1
       TabIndex        =   0
       Tooltip         =   ""
       Top             =   0
