@@ -36,24 +36,6 @@ A feature-rich Wordle game implementation built with [Xojo](https://www.xojo.com
 - **UI Components**: Custom Xojo web controls and containers
 - **Build System**: Xojo IDE with TypeScript compilation
 
-## Project Structure
-
-```
-src/
-├── xojo/                    # Xojo project files
-│   ├── Wordle.xojo_project  # Main Xojo project
-│   ├── Core/                # Core game logic classes
-│   ├── GUI/                 # User interface components
-│   │   ├── Single Player/   # Single player game views
-│   │   ├── Multiplayer/     # Multiplayer game views
-│   │   └── Assets/          # Images and resources
-│   └── App.xojo_code        # Main application class
-└── js/
-    ├── typescript/          # TypeScript source files
-    │   └── WordleGameController.ts
-    └── dist/                # Compiled JavaScript output
-```
-
 ## Installation & Quick Start
 
 ### Quick Setup (Recommended)
@@ -278,7 +260,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Project Information
 
-- **Version**: 1.0.25 (Release 2)
 - **Xojo Version**: 2023.04+
 - **TypeScript Target**: ES2015
 - **Bundle ID**: es.rcruz.wordle
