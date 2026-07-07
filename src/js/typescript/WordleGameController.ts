@@ -106,7 +106,7 @@ namespace Wordle {
         private updateLetters() {
             const wordChars = this.mCurrentWord.split('');
             for (let i = 0; i < 5; i++) {
-                const control = <HTMLSpanElement>this.mLetterControls[i].querySelector('label span')!;
+                const control = <HTMLSpanElement>this.mLetterControls[i].querySelector('.label-caption')!;
                 control.innerText = wordChars[i] ?? '';
             }
         }

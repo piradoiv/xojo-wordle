@@ -14,9 +14,6 @@
 			Begin BuildStepList Mac OS X
 				Begin BuildProjectStep Build
 				End
-				Begin SignProjectStep Sign
-				  DeveloperID=
-				End
 				Begin CopyFilesBuildStep CopyJavaScriptCode
 					AppliesTo = 0
 					Architecture = 0
@@ -25,9 +22,20 @@
 					Subdirectory = js
 					FolderItem = Li4vLi4vanMvZGlzdC9Xb3JkbGVHYW1lQ29udHJvbGxlci5qcw==
 				End
+				Begin SignProjectStep Sign
+				  DeveloperID=
+				End
 			End
 			Begin BuildStepList Windows
 				Begin BuildProjectStep Build
+				End
+				Begin CopyFilesBuildStep CopyResourcesWindows
+					AppliesTo = 0
+					Architecture = 0
+					Target = 0
+					Destination = 1
+					Subdirectory = 
+					FolderItem = Li4vLi4vanMvZGlzdC9Xb3JkbGVHYW1lQ29udHJvbGxlci5qcw==
 				End
 			End
 			Begin BuildStepList Xojo Cloud

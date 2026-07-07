@@ -95,7 +95,7 @@ var Wordle;
             var _a;
             const wordChars = this.mCurrentWord.split('');
             for (let i = 0; i < 5; i++) {
-                const control = this.mLetterControls[i].querySelector('label span');
+                const control = this.mLetterControls[i].querySelector('.label-caption');
                 control.innerText = (_a = wordChars[i]) !== null && _a !== void 0 ? _a : '';
             }
         }

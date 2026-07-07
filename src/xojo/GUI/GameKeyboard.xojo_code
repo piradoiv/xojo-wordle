@@ -3,6 +3,7 @@ Begin WebContainer GameKeyboard
    Compatibility   =   ""
    ControlCount    =   0
    ControlID       =   ""
+   CSSClasses      =   ""
    Enabled         =   True
    Height          =   120
    Indicator       =   0
@@ -15,6 +16,7 @@ Begin WebContainer GameKeyboard
    LockRight       =   False
    LockTop         =   True
    LockVertical    =   False
+   PanelIndex      =   0
    ScrollDirection =   0
    TabIndex        =   0
    Top             =   0
@@ -48,6 +50,12 @@ End
 		    key.EmbedWithin(Self, Self.Width / 13 + caption.Length * 8, captionHeight)
 		    Keys.Value(caption) = key
 		  Next caption
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Pressed(x As Integer, y As Integer)
+		  
 		End Sub
 	#tag EndEvent
 
@@ -96,6 +104,14 @@ End
 #tag EndWindowCode
 
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="PanelIndex"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="ControlCount"
 		Visible=false

@@ -3,6 +3,7 @@ Begin WebContainer GameKeyboardKey
    Compatibility   =   ""
    ControlCount    =   0
    ControlID       =   ""
+   CSSClasses      =   ""
    Enabled         =   True
    Height          =   58
    Indicator       =   0
@@ -15,6 +16,7 @@ Begin WebContainer GameKeyboardKey
    LockRight       =   False
    LockTop         =   True
    LockVertical    =   False
+   PanelIndex      =   0
    ScrollDirection =   0
    TabIndex        =   0
    Top             =   0
@@ -24,11 +26,15 @@ Begin WebContainer GameKeyboardKey
    _mDesignWidth   =   0
    _mPanelIndex    =   -1
    Begin WebRectangle BackgroundRectangle
-      BackgroundColor =   &cFFFFFF00
+      BorderColor     =   &c000000FF
+      BorderThickness =   1
       ControlCount    =   0
       ControlID       =   ""
+      CornerSize      =   -1
+      CSSClasses      =   ""
       Enabled         =   True
-      HasBackgroundColor=   True
+      FillColor       =   &cFFFFFF00
+      HasFillColor    =   True
       Height          =   56
       Index           =   -2147483648
       Indicator       =   0
@@ -42,8 +48,10 @@ Begin WebContainer GameKeyboardKey
       LockRight       =   True
       LockTop         =   True
       LockVertical    =   False
+      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   0
+      TabStop         =   True
       Tooltip         =   ""
       Top             =   1
       Visible         =   True
@@ -55,10 +63,12 @@ Begin WebContainer GameKeyboardKey
    Begin WebLabel CaptionLabel
       Bold            =   False
       ControlID       =   ""
+      CSSClasses      =   ""
       Enabled         =   True
       FontName        =   ""
       FontSize        =   16.0
       Height          =   52
+      HTMLElement     =   0
       Index           =   -2147483648
       Indicator       =   0
       Italic          =   False
@@ -71,8 +81,10 @@ Begin WebContainer GameKeyboardKey
       LockTop         =   True
       LockVertical    =   False
       Multiline       =   False
+      PanelIndex      =   0
       Scope           =   2
       TabIndex        =   1
+      TabStop         =   True
       Text            =   "Q"
       TextAlignment   =   2
       TextColor       =   &c00000000
@@ -92,6 +104,12 @@ End
 		  Style.Cursor = WebStyle.Cursors.Pointer
 		  BackgroundRectangle.Style.Cursor = WebStyle.Cursors.Pointer
 		  CaptionLabel.Style.Cursor = WebStyle.Cursors.Pointer
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Pressed(x As Integer, y As Integer)
+		  
 		End Sub
 	#tag EndEvent
 
@@ -175,6 +193,14 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="PanelIndex"
+		Visible=false
+		Group="Behavior"
+		InitialValue=""
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="ControlCount"
 		Visible=false
